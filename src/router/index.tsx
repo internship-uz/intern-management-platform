@@ -13,7 +13,7 @@ import NotFoundPage from "@/pages/not-found";
 export const router = createBrowserRouter([
   {
     element: <AuthLayout />,
-    children: [{ path: "/sign-in", element: <SignInPage /> }],
+    children: [{ path: "/auth/sign-in", element: <SignInPage /> }],
   },
   {
     element: <MainLayout />,
