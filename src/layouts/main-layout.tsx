@@ -1,4 +1,5 @@
 import { AppSidebar } from "@/components/shared/app-sidebar";
+import { ModeToggle } from "@/components/shared/mode-toggle";
 import {
   SidebarInset,
   SidebarProvider,
@@ -15,6 +16,7 @@ export function MainLayout() {
       <SidebarInset>
         <header className='flex h-14 shrink-0 items-center gap-2 px-4'>
           <SidebarTrigger className='-ml-1' />
+          <ModeToggle />
         </header>
         <main className='flex flex-1 flex-col gap-4 p-4'>
           <Outlet />

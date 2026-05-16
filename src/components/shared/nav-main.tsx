@@ -63,7 +63,12 @@ export function NavMain({
             </Collapsible>
           ) : (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton tooltip={item.title} render={<NavLink to={item.url} end />}>
+              <SidebarMenuButton
+                size='md'
+                tooltip={item.title}
+                className='font-normal aria-[current=page]:bg-sidebar-accent aria-[current=page]:text-sidebar-accent-foreground aria-[current=page]:font-medium'
+                render={<NavLink to={item.url} end />}
+              >
                 {item.icon}
                 <span>{item.title}</span>
               </SidebarMenuButton>
