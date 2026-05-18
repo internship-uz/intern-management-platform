@@ -99,9 +99,8 @@ export function IssueList({
             <tr>
               <th className='w-8 px-3 py-2 text-left'>
                 <Checkbox
-                  checked={
-                    allSelected ? true : someSelected ? "indeterminate" : false
-                  }
+                  checked={allSelected}
+                  indeterminate={someSelected}
                   onCheckedChange={(v) => {
                     if (v) selectAll();
                     else clearSelection();
