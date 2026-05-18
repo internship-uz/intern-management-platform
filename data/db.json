@@ -1,0 +1,193 @@
+{
+  "interns": [
+    {
+      "id": "i1",
+      "name": "Javohir Elmurodov",
+      "email": "javohir@intern.uz",
+      "avatar": "https://i.pravatar.cc/120?img=12",
+      "direction": "Frontend",
+      "level": "Junior",
+      "status": "active",
+      "joinedAt": "2026-02-04"
+    },
+    {
+      "id": "i2",
+      "name": "Diyora Karimova",
+      "email": "diyora@intern.uz",
+      "avatar": "https://i.pravatar.cc/120?img=47",
+      "direction": "Design",
+      "level": "Junior",
+      "status": "active",
+      "joinedAt": "2026-02-12"
+    },
+    {
+      "id": "i3",
+      "name": "Sherzod Rahmonov",
+      "email": "sherzod@intern.uz",
+      "avatar": "https://i.pravatar.cc/120?img=33",
+      "direction": "Backend",
+      "level": "Middle",
+      "status": "active",
+      "joinedAt": "2026-01-20"
+    },
+    {
+      "id": "i4",
+      "name": "Madina Tursunova",
+      "email": "madina@intern.uz",
+      "avatar": "https://i.pravatar.cc/120?img=49",
+      "direction": "QA",
+      "level": "Junior",
+      "status": "paused",
+      "joinedAt": "2026-03-01"
+    },
+    {
+      "id": "i5",
+      "name": "Bekzod Usmonov",
+      "email": "bekzod@intern.uz",
+      "avatar": "https://i.pravatar.cc/120?img=15",
+      "direction": "Mobile",
+      "level": "Junior",
+      "status": "active",
+      "joinedAt": "2026-03-10"
+    },
+    {
+      "id": "i6",
+      "name": "Nilufar Yusupova",
+      "email": "nilufar@intern.uz",
+      "avatar": "https://i.pravatar.cc/120?img=45",
+      "direction": "Frontend",
+      "level": "Middle",
+      "status": "active",
+      "joinedAt": "2026-02-22"
+    },
+    {
+      "id": "i7",
+      "name": "Aziz Khalilov",
+      "email": "aziz@intern.uz",
+      "avatar": "https://i.pravatar.cc/120?img=22",
+      "direction": "DevOps",
+      "level": "Senior",
+      "status": "graduated",
+      "joinedAt": "2025-11-05"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "t1",
+      "key": "IM-1",
+      "title": "Dashboard layout uchun wireframe tayyorlash",
+      "status": "done",
+      "priority": "high",
+      "type": "story",
+      "assigneeId": "i2",
+      "createdAt": "2026-05-10",
+      "dueDate": "2026-05-15",
+      "storyPoints": 3,
+      "labels": ["design"]
+    },
+    {
+      "id": "t2",
+      "key": "IM-2",
+      "title": "Auth flow: Sign-in form validation",
+      "status": "in_progress",
+      "priority": "high",
+      "type": "task",
+      "assigneeId": "i1",
+      "createdAt": "2026-05-12",
+      "dueDate": "2026-05-20",
+      "storyPoints": 5,
+      "labels": ["frontend", "auth"]
+    },
+    {
+      "id": "t3",
+      "key": "IM-3",
+      "title": "REST API: Interns CRUD endpointlari",
+      "status": "in_progress",
+      "priority": "highest",
+      "type": "story",
+      "assigneeId": "i3",
+      "createdAt": "2026-05-11",
+      "dueDate": "2026-05-22",
+      "storyPoints": 8,
+      "labels": ["backend"]
+    },
+    {
+      "id": "t4",
+      "key": "IM-4",
+      "title": "E2E test scenariy: Login + Dashboard",
+      "status": "todo",
+      "priority": "medium",
+      "type": "task",
+      "assigneeId": "i4",
+      "createdAt": "2026-05-14",
+      "dueDate": "2026-05-25",
+      "storyPoints": 3,
+      "labels": ["qa"]
+    },
+    {
+      "id": "t5",
+      "key": "IM-5",
+      "title": "Push notification konfiguratsiyasi",
+      "status": "todo",
+      "priority": "low",
+      "type": "task",
+      "assigneeId": "i5",
+      "createdAt": "2026-05-15",
+      "dueDate": "2026-05-28",
+      "storyPoints": 2,
+      "labels": ["mobile"]
+    },
+    {
+      "id": "t6",
+      "key": "IM-6",
+      "title": "Sidebar dark mode bug — toggle ishlamaydi",
+      "status": "done",
+      "priority": "medium",
+      "type": "bug",
+      "assigneeId": "i6",
+      "createdAt": "2026-05-09",
+      "dueDate": "2026-05-13",
+      "storyPoints": 1,
+      "labels": ["frontend", "ui"]
+    },
+    {
+      "id": "t7",
+      "key": "IM-7",
+      "title": "CI/CD pipeline ni Vercel'ga ulash",
+      "status": "in_progress",
+      "priority": "medium",
+      "type": "task",
+      "assigneeId": "i7",
+      "createdAt": "2026-05-13",
+      "dueDate": "2026-05-19",
+      "storyPoints": 5,
+      "labels": ["devops"]
+    },
+    {
+      "id": "t8",
+      "key": "IM-8",
+      "title": "Tasks bo'limi uchun Kanban view prototipi",
+      "status": "todo",
+      "priority": "high",
+      "type": "story",
+      "assigneeId": "i1",
+      "createdAt": "2026-05-16",
+      "dueDate": "2026-05-24",
+      "storyPoints": 5,
+      "labels": ["frontend"]
+    },
+    {
+      "id": "t9",
+      "key": "IM-9",
+      "title": "Login sahifasida session timeout muammosi",
+      "status": "todo",
+      "priority": "highest",
+      "type": "bug",
+      "assigneeId": "i3",
+      "createdAt": "2026-05-17",
+      "dueDate": "2026-05-21",
+      "storyPoints": 3,
+      "labels": ["backend", "auth"]
+    }
+  ]
+}
