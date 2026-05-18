@@ -8,6 +8,7 @@ export function useTasks() {
   const fetched = useTasksStore((s) => s.fetched);
   const fetchTasks = useTasksStore((s) => s.fetchTasks);
   const setTasks = useTasksStore((s) => s.setTasks);
+  const createTask = useTasksStore((s) => s.createTask);
   const updateTask = useTasksStore((s) => s.updateTask);
   const removeTasks = useTasksStore((s) => s.removeTasks);
 
@@ -20,6 +21,7 @@ export function useTasks() {
     loading,
     error,
     setTasks,
+    createTask,
     updateTask,
     removeTasks,
     refetch: fetchTasks,
