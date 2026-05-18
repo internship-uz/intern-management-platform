@@ -22,6 +22,8 @@ function formatDate(date?: string) {
   }).format(new Date(date));
 }
 
+const getCurrentTime = () => Date.now();
+
 export interface IssueListProps {
   tasks: Task[];
   interns: Intern[];
@@ -147,7 +149,7 @@ export function IssueList({
               const overdue =
                 task.status !== "done" &&
                 task.dueDate &&
-                new Date(task.dueDate).getTime() < Date.now();
+                new Date(task.dueDate).getTime() < getCurrentTime();
 
               const isSelected = selected.has(task.id);
               return (

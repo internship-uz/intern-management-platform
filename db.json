@@ -73,19 +73,6 @@
   ],
   "tasks": [
     {
-      "id": "t1",
-      "key": "IM-1",
-      "title": "Dashboard layout uchun wireframe tayyorlash",
-      "status": "done",
-      "priority": "high",
-      "type": "story",
-      "assigneeId": "i2",
-      "createdAt": "2026-05-10",
-      "dueDate": "2026-05-15",
-      "storyPoints": 3,
-      "labels": ["design"]
-    },
-    {
       "id": "t2",
       "key": "IM-2",
       "title": "Auth flow: Sign-in form validation",
@@ -96,7 +83,10 @@
       "createdAt": "2026-05-12",
       "dueDate": "2026-05-20",
       "storyPoints": 5,
-      "labels": ["frontend", "auth"]
+      "labels": [
+        "frontend",
+        "auth"
+      ]
     },
     {
       "id": "t3",
@@ -109,20 +99,24 @@
       "createdAt": "2026-05-11",
       "dueDate": "2026-05-22",
       "storyPoints": 8,
-      "labels": ["backend"]
+      "labels": [
+        "backend"
+      ]
     },
     {
       "id": "t4",
       "key": "IM-4",
       "title": "E2E test scenariy: Login + Dashboard",
-      "status": "todo",
-      "priority": "medium",
+      "status": "in_progress",
+      "priority": "highest",
       "type": "task",
       "assigneeId": "i4",
       "createdAt": "2026-05-14",
       "dueDate": "2026-05-25",
       "storyPoints": 3,
-      "labels": ["qa"]
+      "labels": [
+        "qa"
+      ]
     },
     {
       "id": "t5",
@@ -135,7 +129,9 @@
       "createdAt": "2026-05-15",
       "dueDate": "2026-05-28",
       "storyPoints": 2,
-      "labels": ["mobile"]
+      "labels": [
+        "mobile"
+      ]
     },
     {
       "id": "t6",
@@ -148,7 +144,10 @@
       "createdAt": "2026-05-09",
       "dueDate": "2026-05-13",
       "storyPoints": 1,
-      "labels": ["frontend", "ui"]
+      "labels": [
+        "frontend",
+        "ui"
+      ]
     },
     {
       "id": "t7",
@@ -161,7 +160,9 @@
       "createdAt": "2026-05-13",
       "dueDate": "2026-05-19",
       "storyPoints": 5,
-      "labels": ["devops"]
+      "labels": [
+        "devops"
+      ]
     },
     {
       "id": "t8",
@@ -174,7 +175,9 @@
       "createdAt": "2026-05-16",
       "dueDate": "2026-05-24",
       "storyPoints": 5,
-      "labels": ["frontend"]
+      "labels": [
+        "frontend"
+      ]
     },
     {
       "id": "t9",
@@ -187,7 +190,11 @@
       "createdAt": "2026-05-17",
       "dueDate": "2026-05-21",
       "storyPoints": 3,
-      "labels": ["backend", "auth"]
+      "labels": [
+        "backend",
+        "auth"
+      ]
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
