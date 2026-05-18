@@ -1,3 +1,4 @@
+import { useNotificationsStore } from "@/store/notifications-store";
 import { create } from "zustand";
 import { internsApi } from "../api/interns.api";
 import type { Intern, InternPatch } from "../types";
@@ -37,6 +38,11 @@ export const useInternsStore = create<InternsState>((set, get) => ({
   async createIntern(intern) {
     const created = await internsApi.create(intern);
     set({ interns: [...get().interns, created] });
+    useNotificationsStore.getState().add({
+      kind: "intern_added",
+      title: "Yangi amaliyotchi qo‘shildi",
+      description: `${created.name} (${created.direction}) jamoaga qo‘shildi`,
+    });
   },
 
   async updateIntern(id, patch) {
@@ -56,9 +62,17 @@ export const useInternsStore = create<InternsState>((set, get) => ({
 
   async removeIntern(id) {
     const previous = get().interns;
+    const removing = previous.find((i) => i.id === id);
     set({ interns: previous.filter((i) => i.id !== id) });
     try {
       await internsApi.remove(id);
+      if (removing) {
+        useNotificationsStore.getState().add({
+          kind: "intern_removed",
+          title: "Amaliyotchi o‘chirildi",
+          description: `${removing.name} jamoadan chiqarildi`,
+        });
+      }
     } catch (err) {
       set({
         interns: previous,
