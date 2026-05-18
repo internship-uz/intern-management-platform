@@ -76,7 +76,7 @@
       "id": "t2",
       "key": "IM-2",
       "title": "Auth flow: Sign-in form validation",
-      "status": "in_progress",
+      "status": "done",
       "priority": "high",
       "type": "task",
       "assigneeId": "i1",
@@ -194,6 +194,16 @@
         "backend",
         "auth"
       ]
+    },
+    {
+      "title": "asdasd",
+      "assigneeId": "i3",
+      "status": "in_progress",
+      "priority": "medium",
+      "type": "story",
+      "id": "4SfZywc-_Tg",
+      "key": "IM-557",
+      "createdAt": "2026-05-18T12:45:14.132Z"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
