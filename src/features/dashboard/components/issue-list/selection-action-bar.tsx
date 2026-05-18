@@ -1,17 +1,9 @@
-import {
-  EyeIcon,
-  PencilIcon,
-  RefreshCcwIcon,
-  Trash2Icon,
-  XIcon,
-} from "lucide-react";
+import { PencilIcon, Trash2Icon, XIcon } from "lucide-react";
 
 export interface SelectionActionBarProps {
   selectedCount: number;
   onSelectAll: () => void;
   onEditFields: () => void;
-  onChangeStatus: () => void;
-  onWatch: () => void;
   onDelete: () => void;
   onClear: () => void;
 }
@@ -20,8 +12,6 @@ export function SelectionActionBar({
   selectedCount,
   onSelectAll,
   onEditFields,
-  onChangeStatus,
-  onWatch,
   onDelete,
   onClear,
 }: SelectionActionBarProps) {
@@ -51,24 +41,6 @@ export function SelectionActionBar({
         >
           <PencilIcon className='size-3.5' />
           Edit fields
-        </button>
-
-        <button
-          type='button'
-          onClick={onChangeStatus}
-          className='inline-flex items-center gap-1.5 rounded-sm px-2 py-1 text-xs transition-colors hover:bg-muted'
-        >
-          <RefreshCcwIcon className='size-3.5' />
-          Change status
-        </button>
-
-        <button
-          type='button'
-          onClick={onWatch}
-          className='inline-flex items-center gap-1.5 rounded-sm px-2 py-1 text-xs transition-colors hover:bg-muted'
-        >
-          <EyeIcon className='size-3.5' />
-          Watch options
         </button>
 
         <button

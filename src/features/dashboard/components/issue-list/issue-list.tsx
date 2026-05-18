@@ -1,10 +1,16 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Checkbox } from "@/components/ui/checkbox";
 import type { Intern } from "@/features/interns";
-import type { Task, TaskPriority, TaskStatus } from "@/features/tasks";
+import type {
+  Task,
+  TaskPatch,
+  TaskPriority,
+  TaskStatus,
+} from "@/features/tasks";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { issueTypeMeta } from "../issue-meta";
+import { EditFieldsDialog } from "./edit-fields-dialog";
 import { PriorityPill } from "./priority-pill";
 import { SelectionActionBar } from "./selection-action-bar";
 import { SortableHeader } from "./sortable-header";
@@ -22,11 +28,14 @@ function formatDate(date?: string) {
   }).format(new Date(date));
 }
 
+const getCurrentTime = () => Date.now();
+
 export interface IssueListProps {
   tasks: Task[];
   interns: Intern[];
   onStatusChange: (taskId: string, status: TaskStatus) => void;
   onPriorityChange: (taskId: string, priority: TaskPriority) => void;
+  onUpdateTask?: (taskId: string, patch: TaskPatch) => void;
   onDelete?: (taskIds: string[]) => void;
 }
 
@@ -35,12 +44,14 @@ export function IssueList({
   interns,
   onStatusChange,
   onPriorityChange,
+  onUpdateTask,
   onDelete,
 }: IssueListProps) {
   const internMap = new Map(interns.map((i) => [i.id, i]));
   const [sortKey, setSortKey] = useState<SortKey>("key");
   const [asc, setAsc] = useState(true);
   const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [editOpen, setEditOpen] = useState(false);
 
   function toggleSort(key: SortKey) {
     if (sortKey === key) setAsc((v) => !v);
@@ -69,6 +80,11 @@ export function IssueList({
 
   function handleDelete() {
     onDelete?.(Array.from(selected));
+    clearSelection();
+  }
+
+  function handleApplyEdit(patch: TaskPatch) {
+    selected.forEach((id) => onUpdateTask?.(id, patch));
     clearSelection();
   }
 
@@ -147,7 +163,7 @@ export function IssueList({
               const overdue =
                 task.status !== "done" &&
                 task.dueDate &&
-                new Date(task.dueDate).getTime() < Date.now();
+                new Date(task.dueDate).getTime() < getCurrentTime();
 
               const isSelected = selected.has(task.id);
               return (
@@ -250,11 +266,17 @@ export function IssueList({
       <SelectionActionBar
         selectedCount={selected.size}
         onSelectAll={selectAll}
-        onEditFields={() => {}}
-        onChangeStatus={() => {}}
-        onWatch={() => {}}
+        onEditFields={() => setEditOpen(true)}
         onDelete={handleDelete}
         onClear={clearSelection}
+      />
+
+      <EditFieldsDialog
+        open={editOpen}
+        tasks={tasks.filter((t) => selected.has(t.id))}
+        interns={interns}
+        onClose={() => setEditOpen(false)}
+        onApply={handleApplyEdit}
       />
     </div>
   );
