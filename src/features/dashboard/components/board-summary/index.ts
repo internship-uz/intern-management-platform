@@ -1,11 +1,5 @@
 export { BoardSummary } from "./board-summary";
 export type { BoardSummaryProps } from "./board-summary";
 export { Panel } from "./panel";
-export { DonutChart } from "./donut-chart";
-export { Legend } from "./legend";
-export { Toolbar } from "./toolbar";
-export { TopStats } from "./top-stats";
-export { StatusOverview } from "./status-overview";
 export { PriorityBreakdown } from "./priority-breakdown";
-export { TypesOfWork } from "./types-of-work";
 export { TeamWorkload } from "./team-workload";
