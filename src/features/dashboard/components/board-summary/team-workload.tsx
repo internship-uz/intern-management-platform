@@ -24,11 +24,7 @@ export function TeamWorkload({ tasks, interns }: TeamWorkloadProps) {
     .slice(0, 6);
 
   return (
-    <Panel
-      title='Team workload'
-      hint='Monitor the capacity of your team.'
-      link={{ label: "Reassign work items to get the right balance" }}
-    >
+    <Panel title='Team workload'>
       <table className='w-full text-xs'>
         <thead>
           <tr className='text-left text-[11px] font-medium tracking-wide text-muted-foreground uppercase'>
