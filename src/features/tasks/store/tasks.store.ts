@@ -9,6 +9,7 @@ interface TasksState {
   fetched: boolean;
 
   fetchTasks: () => Promise<void>;
+  createTask: (data: Omit<Task, "id" | "key" | "createdAt">) => Promise<void>;
   setTasks: (tasks: Task[]) => void;
   updateTask: (id: string, patch: TaskPatch) => Promise<void>;
   removeTasks: (ids: string[]) => Promise<void>;
@@ -36,6 +37,28 @@ export const useTasksStore = create<TasksState>((set, get) => ({
 
   setTasks(tasks) {
     set({ tasks });
+  },
+
+  async createTask(data) {
+    const newTask: Task = {
+      ...data,
+      id: crypto.randomUUID(),
+      key: `IM-${Math.floor(Math.random() * 1000) + 1}`,
+      createdAt: new Date().toISOString(),
+    };
+    
+    set((state) => ({
+      tasks: [...state.tasks, newTask]
+    }));
+    
+    try {
+      await tasksApi.create(newTask);
+    } catch (err) {
+      set((state) => ({
+        tasks: state.tasks.filter((t) => t.id !== newTask.id),
+        error: err instanceof Error ? err.message : "Create failed",
+      }));
+    }
   },
 
   async updateTask(id, patch) {
