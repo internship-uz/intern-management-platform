@@ -116,7 +116,7 @@ export function TasksView() {
                 {/* User / Assignee Row */}
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Assignee</label>
-                  <Select value={newTaskAssignee} onValueChange={setNewTaskAssignee}>
+                  <Select value={newTaskAssignee} onValueChange={(v) => v && setNewTaskAssignee(v)}>
                     <SelectTrigger className="w-full">
                       {newTaskAssignee ? (
                         (() => {
@@ -164,7 +164,7 @@ export function TasksView() {
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium">Issue Type</label>
-                    <Select value={newTaskType} onValueChange={(val: IssueType) => setNewTaskType(val)}>
+                    <Select value={newTaskType} onValueChange={(val) => val && setNewTaskType(val)}>
                       <SelectTrigger className="w-full">
                         <SelectValue placeholder="Select type" />
                       </SelectTrigger>
@@ -181,7 +181,7 @@ export function TasksView() {
                 {/* Status Row */}
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Status</label>
-                  <Select value={newTaskStatus} onValueChange={(val: TaskStatus) => setNewTaskStatus(val)}>
+                  <Select value={newTaskStatus} onValueChange={(val) => val && setNewTaskStatus(val)}>
                     <SelectTrigger className="w-full">
                       <SelectValue placeholder="Select status" />
                     </SelectTrigger>
@@ -196,7 +196,7 @@ export function TasksView() {
                 {/* Priority Row */}
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Priority</label>
-                  <Select value={newTaskPriority} onValueChange={(val: TaskPriority) => setNewTaskPriority(val)}>
+                  <Select value={newTaskPriority} onValueChange={(val) => val && setNewTaskPriority(val)}>
                     <SelectTrigger className="w-full">
                       <SelectValue placeholder="Select priority" />
                     </SelectTrigger>

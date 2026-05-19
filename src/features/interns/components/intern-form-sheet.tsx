@@ -8,17 +8,24 @@ import { useState } from "react";
 import { useInterns } from "../hooks/use-interns";
 import type { Intern, Direction, Level, InternStatus } from "../types";
 
-export function InternFormSheet({ intern, trigger }: { intern?: Intern; trigger?: React.ReactNode }) {
+export function InternFormSheet({ intern, trigger }: { intern?: Intern; trigger?: React.ReactElement }) {
   const { createIntern, updateIntern } = useInterns();
   const [open, setOpen] = useState(false);
   const isEdit = !!intern;
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<{
+    name: string;
+    email: string;
+    direction: string;
+    level: string;
+    status: string;
+    avatar: string;
+  }>({
     name: intern?.name || "",
     email: intern?.email || "",
     direction: intern?.direction || "Frontend",
     level: intern?.level || "Trainee",
-    status: intern?.status || ("active" as InternStatus),
+    status: intern?.status || "active",
     avatar: intern?.avatar || ""
   });
 
@@ -100,7 +107,7 @@ export function InternFormSheet({ intern, trigger }: { intern?: Intern; trigger?
           </div>
           <div className="flex flex-col gap-2">
             <Label>Level</Label>
-            <Select value={formData.level} onValueChange={(val) => setFormData({ ...formData, level: val })}>
+            <Select value={formData.level} onValueChange={(val) => val && setFormData({ ...formData, level: val })}>
               <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
               <SelectContent>
                 <SelectItem value="Trainee">Trainee</SelectItem>
@@ -112,7 +119,7 @@ export function InternFormSheet({ intern, trigger }: { intern?: Intern; trigger?
           </div>
           <div className="flex flex-col gap-2">
             <Label>Status</Label>
-            <Select value={formData.status} onValueChange={(val) => setFormData({ ...formData, status: val })}>
+            <Select value={formData.status} onValueChange={(val) => val && setFormData({ ...formData, status: val })}>
               <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
               <SelectContent>
                 <SelectItem value="active">Active</SelectItem>
