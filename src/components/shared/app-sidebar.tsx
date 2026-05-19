@@ -12,12 +12,7 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import {
-  LayoutDashboardIcon,
-  ListChecksIcon,
-  SettingsIcon,
-  UsersIcon,
-} from "lucide-react";
+import { LayoutDashboardIcon, ListChecksIcon, UsersIcon } from "lucide-react";
 
 const data = {
   user: {
@@ -40,11 +35,6 @@ const data = {
       title: "Tasks",
       url: "/tasks",
       icon: <ListChecksIcon />,
-    },
-    {
-      title: "Settings",
-      url: "/settings",
-      icon: <SettingsIcon />,
     },
   ],
 };
