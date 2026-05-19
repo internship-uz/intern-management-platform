@@ -4,9 +4,26 @@ import { Button } from "@/components/ui/button";
 import { Edit, Trash, Plus } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { InternFormSheet } from "./intern-form-sheet";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { useState } from "react";
+import type { Intern } from "../types";
 
 export function InternsList() {
   const { interns, loading, removeIntern } = useInterns();
+  const [deleteTarget, setDeleteTarget] = useState<Intern | null>(null);
+
+  function handleConfirmDelete() {
+    if (!deleteTarget) return;
+    removeIntern(deleteTarget.id);
+    setDeleteTarget(null);
+  }
 
   if (loading && interns.length === 0) {
     return <div>Yuklanmoqda...</div>;
@@ -64,7 +81,11 @@ export function InternsList() {
                       </Button>
                     }
                   />
-                  <Button variant="ghost" size="icon" onClick={() => confirm("Are you sure you want to delete?") && removeIntern(intern.id)}>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setDeleteTarget(intern)}
+                  >
                     <Trash className="w-4 h-4 text-red-500" />
                   </Button>
                 </td>
@@ -73,6 +94,30 @@ export function InternsList() {
           </tbody>
         </table>
       </div>
+
+      <Dialog
+        open={deleteTarget !== null}
+        onOpenChange={(open) => !open && setDeleteTarget(null)}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Delete intern</DialogTitle>
+            <DialogDescription>
+              {deleteTarget
+                ? `Are you sure you want to delete "${deleteTarget.name}"? This action cannot be undone.`
+                : ""}
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setDeleteTarget(null)}>
+              Cancel
+            </Button>
+            <Button variant="destructive" onClick={handleConfirmDelete}>
+              Delete
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
