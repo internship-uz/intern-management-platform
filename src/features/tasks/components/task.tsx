@@ -29,7 +29,7 @@ import { cn } from "@/lib/utils";
 
 export type FilterValue<T> = T | "all";
 
-export function Task() {
+export function TasksView() {
   const { tasks, loading, updateTask, createTask, removeTasks } = useTasks();
   const { interns } = useInterns();
   
@@ -101,11 +101,9 @@ export function Task() {
         </Breadcrumb>
         <div className='flex items-center gap-2'>
           <Sheet open={isCreating} onOpenChange={setIsCreating}>
-            <SheetTrigger asChild>
-              <Button size='sm'>
-                <Plus className="mr-1 h-3 w-3" />
-                Create
-              </Button>
+            <SheetTrigger render={<Button size='sm' />}>
+              <Plus className="mr-1 h-3 w-3" />
+              Create
             </SheetTrigger>
             <SheetContent className="overflow-y-auto sm:max-w-md">
               <SheetHeader>
@@ -118,7 +116,7 @@ export function Task() {
                 {/* User / Assignee Row */}
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Assignee</label>
-                  <Select value={newTaskAssignee} onValueChange={setNewTaskAssignee}>
+                  <Select value={newTaskAssignee} onValueChange={(v) => v && setNewTaskAssignee(v)}>
                     <SelectTrigger className="w-full">
                       {newTaskAssignee ? (
                         (() => {
@@ -166,7 +164,7 @@ export function Task() {
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium">Issue Type</label>
-                    <Select value={newTaskType} onValueChange={(val: IssueType) => setNewTaskType(val)}>
+                    <Select value={newTaskType} onValueChange={(val) => val && setNewTaskType(val)}>
                       <SelectTrigger className="w-full">
                         <SelectValue placeholder="Select type" />
                       </SelectTrigger>
@@ -183,7 +181,7 @@ export function Task() {
                 {/* Status Row */}
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Status</label>
-                  <Select value={newTaskStatus} onValueChange={(val: TaskStatus) => setNewTaskStatus(val)}>
+                  <Select value={newTaskStatus} onValueChange={(val) => val && setNewTaskStatus(val)}>
                     <SelectTrigger className="w-full">
                       <SelectValue placeholder="Select status" />
                     </SelectTrigger>
@@ -198,7 +196,7 @@ export function Task() {
                 {/* Priority Row */}
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Priority</label>
-                  <Select value={newTaskPriority} onValueChange={(val: TaskPriority) => setNewTaskPriority(val)}>
+                  <Select value={newTaskPriority} onValueChange={(val) => val && setNewTaskPriority(val)}>
                     <SelectTrigger className="w-full">
                       <SelectValue placeholder="Select priority" />
                     </SelectTrigger>

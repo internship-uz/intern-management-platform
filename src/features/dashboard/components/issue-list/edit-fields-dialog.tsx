@@ -154,7 +154,10 @@ export function EditFieldsDialog({
           </Field>
 
           <Field label='Assignee'>
-            <Select value={assigneeId} onValueChange={setAssigneeId}>
+            <Select
+              value={assigneeId}
+              onValueChange={(v) => v && setAssigneeId(v)}
+            >
               <SelectTrigger size='sm' className='w-full'>
                 <SelectValue placeholder='Multiple values'>
                   {(value: string) =>

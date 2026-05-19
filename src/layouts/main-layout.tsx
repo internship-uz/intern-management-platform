@@ -1,9 +1,15 @@
 import { Header } from "@/components/header";
 import { AppSidebar } from "@/components/shared/app-sidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 export function MainLayout() {
+  const isAuth = !!localStorage.getItem("user");
+
+  if (!isAuth) {
+    return <Navigate to="/auth/sign-in" replace />;
+  }
+
   return (
     <SidebarProvider
       style={{ "--sidebar-width": "16rem" } as React.CSSProperties}

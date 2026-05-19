@@ -1,4 +1,11 @@
 {
+    "users": [
+    {
+      "id": "u1",
+      "email": "admin@gmail.com",
+      "password": "password"
+    }
+  ],
   "interns": [
     {
       "id": "i1",
@@ -69,6 +76,36 @@
       "level": "Senior",
       "status": "graduated",
       "joinedAt": "2025-11-05"
+    },
+    {
+      "name": "ssswwwwwtyyj",
+      "email": "sssss@asda.com",
+      "direction": "Frontend",
+      "level": "Trainee",
+      "status": "active",
+      "avatar": "https://m.media-amazon.com/images/S/pv-target-images/16627900db04b76fae3b64266ca161511422059cd24062fb5d900971003a0b70._SX1080_FMjpg_.jpg",
+      "joinedAt": "2026-05-19",
+      "id": "ILNIcaFobFg"
+    },
+    {
+      "name": "Abdulloh",
+      "email": "jjjjjkkk@gmail.com",
+      "direction": "Backend",
+      "level": "Senior",
+      "status": "inactive",
+      "avatar": "https://sm.ign.com/t/ign_pk/cover/a/avatar-gen/avatar-generations_rpge.600.jpg",
+      "joinedAt": "2026-05-19",
+      "id": "3Y4biSYk60Y"
+    },
+    {
+      "name": "SHJakak",
+      "email": "ksksaoo@gmail.com",
+      "direction": "QA",
+      "level": "Trainee",
+      "status": "active",
+      "avatar": "https://img.magnific.com/free-psd/3d-illustration-with-online-avatar_23-2151303097.jpg?semt=ais_hybrid&w=740&q=80",
+      "joinedAt": "2026-05-19",
+      "id": "C4hUWuDQ200"
     }
   ],
   "tasks": [
@@ -76,7 +113,7 @@
       "id": "t2",
       "key": "IM-2",
       "title": "Auth flow: Sign-in form validation",
-      "status": "in_progress",
+      "status": "done",
       "priority": "high",
       "type": "task",
       "assigneeId": "i1",
@@ -194,6 +231,36 @@
         "backend",
         "auth"
       ]
+    },
+    {
+      "title": "asdasd",
+      "assigneeId": "i3",
+      "status": "in_progress",
+      "priority": "medium",
+      "type": "story",
+      "id": "4SfZywc-_Tg",
+      "key": "IM-557",
+      "createdAt": "2026-05-18T12:45:14.132Z"
+    },
+    {
+      "title": "fix intern page",
+      "assigneeId": "3Y4biSYk60Y",
+      "status": "in_progress",
+      "priority": "highest",
+      "type": "bug",
+      "id": "WNa9jkeS9Fs",
+      "key": "IM-333",
+      "createdAt": "2026-05-19T10:02:13.224Z"
+    },
+    {
+      "title": "bugs",
+      "assigneeId": "C4hUWuDQ200",
+      "status": "in_progress",
+      "priority": "low",
+      "type": "bug",
+      "id": "sfok8NSBctU",
+      "key": "IM-603",
+      "createdAt": "2026-05-19T10:05:57.819Z"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

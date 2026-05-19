@@ -1,75 +1,96 @@
-# React + TypeScript + Vite
+# Intern Management Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite + TypeScript ilovasi. Mock backend sifatida `json-server` ishlatiladi (`db.json`).
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19 + TypeScript
+- Vite (React Compiler bilan)
+- Tailwind CSS v4
+- shadcn/ui + Base UI
+- Zustand (state)
+- React Router
+- Axios + json-server (mock API)
 
-## React Compiler
+## Talablar
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Node.js **>= 20**
+- npm (yoki pnpm/yarn — quyidagi misollarda `npm` ishlatiladi)
 
-Note: This will impact Vite dev & build performances.
+## O'rnatish
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/internship-uz/intern-management-platform.git
+cd intern-management-platform
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Environment
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Loyihaning ildizida `.env` fayli kerak — `.env.example` dan nusxa oling:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cp .env.example .env
+```
+
+Default qiymat:
+
+```
+VITE_API_URL=http://localhost:3001
+```
+
+Bu URL `json-server` ishlatadigan portga mos kelishi kerak.
+
+## Ishga tushirish
+
+### Frontend va mock API ni birga (tavsiya etiladi)
+
+```bash
+npm run dev:all
+```
+
+Bu `vite` (port `5173`) va `json-server` (port `3001`) ni `concurrently` orqali parallel ishga tushiradi.
+
+### Alohida ishga tushirish
+
+Ikkita alohida terminalda:
+
+```bash
+# Terminal 1 — frontend
+npm run dev
+
+# Terminal 2 — mock API
+npm run dev:api
+```
+
+So'ngra brauzerda: <http://localhost:5173>
+
+## Mock API
+
+- Ma'lumotlar `db.json` faylida saqlanadi (`users`, `interns`, `tasks`)
+- json-server `http://localhost:3001` da REST endpointlar taqdim etadi
+- Login uchun test foydalanuvchi: `db.json > users` dagi yozuvni ishlating
+
+## Boshqa skriptlar
+
+| Skript | Tavsifi |
+| --- | --- |
+| `npm run dev` | Faqat Vite dev server |
+| `npm run dev:api` | Faqat json-server |
+| `npm run dev:all` | Vite + json-server parallel |
+| `npm run build` | TypeScript tekshiruvi + production build |
+| `npm run preview` | Build qilingan versiyani lokal ko'rish |
+| `npm run lint` | ESLint |
+
+## Loyiha tuzilmasi
+
+```
+src/
+  api/          # apiClient (axios)
+  components/   # umumiy UI komponentlar (shadcn)
+  features/    # auth, dashboard, interns, tasks
+  layouts/      # main-layout, auth-layout
+  pages/        # route sahifalar
+  router/       # React Router konfiguratsiyasi
+  store/        # Zustand store'lar
 ```

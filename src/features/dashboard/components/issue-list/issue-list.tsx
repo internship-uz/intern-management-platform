@@ -8,6 +8,7 @@ import type {
   TaskStatus,
 } from "@/features/tasks";
 import { cn } from "@/lib/utils";
+import { useSearchStore } from "@/store/search-store";
 import { useState } from "react";
 import { issueTypeMeta } from "../issue-meta";
 import { EditFieldsDialog } from "./edit-fields-dialog";
@@ -16,19 +17,9 @@ import { SelectionActionBar } from "./selection-action-bar";
 import { SortableHeader } from "./sortable-header";
 import { StatusPill } from "./status-pill";
 
-type SortKey = "key" | "priority" | "points" | "due";
+type SortKey = "priority";
 
 const priorityOrder = ["highest", "high", "medium", "low", "lowest"] as const;
-
-function formatDate(date?: string) {
-  if (!date) return "—";
-  return new Intl.DateTimeFormat("uz-UZ", {
-    day: "2-digit",
-    month: "short",
-  }).format(new Date(date));
-}
-
-const getCurrentTime = () => Date.now();
 
 export interface IssueListProps {
   tasks: Task[];
@@ -48,7 +39,7 @@ export function IssueList({
   onDelete,
 }: IssueListProps) {
   const internMap = new Map(interns.map((i) => [i.id, i]));
-  const [sortKey, setSortKey] = useState<SortKey>("key");
+  const [sortKey, setSortKey] = useState<SortKey>("priority");
   const [asc, setAsc] = useState(true);
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [editOpen, setEditOpen] = useState(false);
@@ -71,7 +62,7 @@ export function IssueList({
   }
 
   function selectAll() {
-    setSelected(new Set(tasks.map((t) => t.id)));
+    setSelected(new Set(sorted.map((t) => t.id)));
   }
 
   function clearSelection() {
@@ -88,22 +79,24 @@ export function IssueList({
     clearSelection();
   }
 
+  const query = useSearchStore((s) => s.query);
+  const q = query.trim().toLowerCase();
+
+  const filtered = q
+    ? tasks.filter(
+        (t) =>
+          t.title.toLowerCase().includes(q) ||
+          t.key.toLowerCase().includes(q)
+      )
+    : tasks;
+
   const allSelected =
-    tasks.length > 0 && selected.size === tasks.length;
+    filtered.length > 0 && selected.size === filtered.length;
   const someSelected = selected.size > 0 && !allSelected;
 
-  const sorted = [...tasks].sort((a, b) => {
-    let cmp = 0;
-    if (sortKey === "key") cmp = a.key.localeCompare(b.key);
-    else if (sortKey === "priority")
-      cmp =
-        priorityOrder.indexOf(a.priority) - priorityOrder.indexOf(b.priority);
-    else if (sortKey === "points")
-      cmp = (a.storyPoints ?? 0) - (b.storyPoints ?? 0);
-    else if (sortKey === "due")
-      cmp =
-        (a.dueDate ? new Date(a.dueDate).getTime() : Infinity) -
-        (b.dueDate ? new Date(b.dueDate).getTime() : Infinity);
+  const sorted = [...filtered].sort((a, b) => {
+    const cmp =
+      priorityOrder.indexOf(a.priority) - priorityOrder.indexOf(b.priority);
     return asc ? cmp : -cmp;
   });
 
@@ -124,14 +117,9 @@ export function IssueList({
                   aria-label='Select all'
                 />
               </th>
+              <th className='w-10 px-3 py-2 text-left font-medium'>#</th>
               <th className='w-8 px-3 py-2 text-left'>T</th>
-              <SortableHeader
-                label='Key'
-                active={sortKey === "key"}
-                asc={asc}
-                onClick={() => toggleSort("key")}
-              />
-              <th className='px-3 py-2 text-left font-medium'>Summary</th>
+              <th className='px-3 py-2 text-left font-medium'>Title</th>
               <th className='px-3 py-2 text-left font-medium'>Status</th>
               <SortableHeader
                 label='Priority'
@@ -140,31 +128,13 @@ export function IssueList({
                 onClick={() => toggleSort("priority")}
               />
               <th className='px-3 py-2 text-left font-medium'>Assignee</th>
-              <SortableHeader
-                label='Points'
-                active={sortKey === "points"}
-                asc={asc}
-                onClick={() => toggleSort("points")}
-                className='text-right'
-              />
-              <SortableHeader
-                label='Due'
-                active={sortKey === "due"}
-                asc={asc}
-                onClick={() => toggleSort("due")}
-              />
             </tr>
           </thead>
           <tbody className='divide-y divide-border/60'>
-            {sorted.map((task) => {
+            {sorted.map((task, index) => {
               const type = issueTypeMeta[task.type];
               const TypeIcon = type.icon;
               const assignee = internMap.get(task.assigneeId);
-              const overdue =
-                task.status !== "done" &&
-                task.dueDate &&
-                new Date(task.dueDate).getTime() < getCurrentTime();
-
               const isSelected = selected.has(task.id);
               return (
                 <tr
@@ -178,8 +148,11 @@ export function IssueList({
                       onCheckedChange={(v) =>
                         toggleSelected(task.id, v === true)
                       }
-                      aria-label={`Select ${task.key}`}
+                      aria-label={`Select row ${index + 1}`}
                     />
+                  </td>
+                  <td className='px-3 py-2 font-medium text-muted-foreground tabular-nums'>
+                    {index + 1}
                   </td>
                   <td className='px-3 py-2'>
                     <span
@@ -191,9 +164,6 @@ export function IssueList({
                     >
                       <TypeIcon className='size-2.5' />
                     </span>
-                  </td>
-                  <td className='px-3 py-2 font-medium text-muted-foreground'>
-                    {task.key}
                   </td>
                   <td className='px-3 py-2 font-medium'>
                     <div className='flex items-center gap-2'>
@@ -238,23 +208,6 @@ export function IssueList({
                         Unassigned
                       </span>
                     )}
-                  </td>
-                  <td className='px-3 py-2 text-right'>
-                    {task.storyPoints != null && (
-                      <span className='inline-flex size-5 items-center justify-center rounded-full bg-muted text-[10px] font-semibold'>
-                        {task.storyPoints}
-                      </span>
-                    )}
-                  </td>
-                  <td
-                    className={cn(
-                      "px-3 py-2 text-xs",
-                      overdue
-                        ? "font-medium text-rose-600 dark:text-rose-400"
-                        : "text-muted-foreground"
-                    )}
-                  >
-                    {formatDate(task.dueDate)}
                   </td>
                 </tr>
               );
