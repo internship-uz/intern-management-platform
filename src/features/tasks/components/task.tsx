@@ -29,7 +29,7 @@ import { cn } from "@/lib/utils";
 
 export type FilterValue<T> = T | "all";
 
-export function Task() {
+export function TasksView() {
   const { tasks, loading, updateTask, createTask, removeTasks } = useTasks();
   const { interns } = useInterns();
   
@@ -101,11 +101,9 @@ export function Task() {
         </Breadcrumb>
         <div className='flex items-center gap-2'>
           <Sheet open={isCreating} onOpenChange={setIsCreating}>
-            <SheetTrigger asChild>
-              <Button size='sm'>
-                <Plus className="mr-1 h-3 w-3" />
-                Create
-              </Button>
+            <SheetTrigger render={<Button size='sm' />}>
+              <Plus className="mr-1 h-3 w-3" />
+              Create
             </SheetTrigger>
             <SheetContent className="overflow-y-auto sm:max-w-md">
               <SheetHeader>

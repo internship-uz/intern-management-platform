@@ -1,7 +1,9 @@
+import { InternsList } from "@/features/interns";
+
 export default function InternsListPage() {
   return (
-    <div>
-      <h1 className="text-2xl font-semibold">Interns</h1>
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-4">
+      <InternsList />
     </div>
   );
 }
