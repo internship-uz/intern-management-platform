@@ -50,6 +50,14 @@ const data = {
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const loggedUser = JSON.parse(localStorage.getItem("user") || "{}");
+  
+  const currentUser = {
+    name: loggedUser.id ? "Admin" : data.user.name,
+    email: loggedUser.email || data.user.email,
+    avatar: loggedUser.id ? "https://github.com/shadcn.png" : data.user.avatar,
+  };
+
   return (
     <Sidebar collapsible='icon' variant='floating' {...props}>
       <SidebarHeader>
@@ -69,7 +77,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={currentUser} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

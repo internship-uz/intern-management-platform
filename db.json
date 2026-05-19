@@ -1,4 +1,11 @@
 {
+    "users": [
+    {
+      "id": "u1",
+      "email": "admin@gmail.com",
+      "password": "password"
+    }
+  ],
   "interns": [
     {
       "id": "i1",
