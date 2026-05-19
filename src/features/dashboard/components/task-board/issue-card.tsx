@@ -49,8 +49,8 @@ export function IssueCard({
         onDrop();
       }}
       className={cn(
-        "group cursor-grab rounded-sm border border-border/60 bg-background p-2.5 shadow-xs transition-all hover:border-primary/40 hover:shadow-sm active:cursor-grabbing",
-        isDragging && "rotate-1 opacity-40",
+        "group cursor-grab rounded-sm border border-border/60 bg-background p-2.5 shadow-xs hover:border-primary/40 hover:shadow-sm active:cursor-grabbing",
+        isDragging && "opacity-40",
         isOver && "border-primary ring-1 ring-primary/40"
       )}
     >
