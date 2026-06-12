@@ -26,6 +26,55 @@
       "password": "intern",
       "role": "intern",
       "internId": "i3"
+    },
+    {
+      "id": "552a4cab-6c9b-488d-a058-97bdb08c9551",
+      "email": "madina@intern.uz",
+      "password": "intern",
+      "role": "intern",
+      "internId": "i4"
+    },
+    {
+      "id": "4afa5c7e-3cd4-4c96-bc38-fd96bc58dae6",
+      "email": "bekzod@intern.uz",
+      "password": "intern",
+      "role": "intern",
+      "internId": "i5"
+    },
+    {
+      "id": "f7738bc4-576c-4510-97e1-e07498cbdd93",
+      "email": "nilufar@intern.uz",
+      "password": "intern",
+      "role": "intern",
+      "internId": "i6"
+    },
+    {
+      "id": "a8d57205-f1be-4fb8-b455-efa5e7ae49ad",
+      "email": "aziz@intern.uz",
+      "password": "intern",
+      "role": "intern",
+      "internId": "i7"
+    },
+    {
+      "id": "bdff1f7e-56a9-47c1-ac27-3944a7761168",
+      "email": "sssss@asda.com",
+      "password": "intern",
+      "role": "intern",
+      "internId": "ILNIcaFobFg"
+    },
+    {
+      "id": "989f40f9-6761-41f3-bda0-6703bfbbe3f0",
+      "email": "jjjjjkkk@gmail.com",
+      "password": "intern",
+      "role": "intern",
+      "internId": "3Y4biSYk60Y"
+    },
+    {
+      "id": "567f6553-485a-4968-bffe-151e7ee21413",
+      "email": "ksksaoo@gmail.com",
+      "password": "intern",
+      "role": "intern",
+      "internId": "C4hUWuDQ200"
     }
   ],
   "interns": [

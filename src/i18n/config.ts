@@ -12,7 +12,7 @@ export const resources = {
   uz: { translation: uz },
   ru: { translation: ru },
   en: { translation: en },
-} as const;
+} as const
 
 export const LANGUAGE_OPTIONS: { value: Language; label: string }[] = [
   { value: "uz", label: "O'zbekcha" },

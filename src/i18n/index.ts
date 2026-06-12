@@ -31,10 +31,10 @@ i18n.on("languageChanged", (lng) => {
 document.documentElement.lang = i18n.language;
 
 export default i18n;
+export { useTranslation } from "react-i18next";
 export {
+  DEFAULT_LANGUAGE,
   LANGUAGES,
   LANGUAGE_OPTIONS,
-  DEFAULT_LANGUAGE,
   type Language,
 } from "./config";
-export { useTranslation } from "react-i18next";
