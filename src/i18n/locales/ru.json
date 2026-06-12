@@ -1,0 +1,68 @@
+{
+  "common": {
+    "loading": "Загрузка...",
+    "error": "Произошла ошибка",
+    "retry": "Повторить",
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "submit": "Отправить",
+    "search": "Поиск",
+    "logout": "Выйти",
+    "empty": "Данные не найдены"
+  },
+  "auth": {
+    "welcome": "Добро пожаловать",
+    "email": "Эл. почта",
+    "password": "Пароль",
+    "continue": "Продолжить",
+    "login": "Войти",
+    "invalidCredentials": "Неверная почта или пароль"
+  },
+  "nav": {
+    "dashboard": "Панель управления",
+    "interns": "Стажёры",
+    "tasks": "Задачи",
+    "submissions": "Работы",
+    "profile": "Профиль",
+    "myTasks": "Мои задачи"
+  },
+  "intern": {
+    "portalTitle": "Портал стажёра",
+    "profile": "Профиль",
+    "myTasks": "Мои задачи",
+    "taskStatus": "Статус задачи",
+    "deadline": "Срок",
+    "direction": "Направление",
+    "level": "Уровень",
+    "joinedAt": "Дата присоединения"
+  },
+  "task": {
+    "status": "Статус",
+    "priority": "Приоритет",
+    "dueDate": "Срок",
+    "todo": "К выполнению",
+    "in_progress": "В процессе",
+    "done": "Выполнено"
+  },
+  "submission": {
+    "title": "Отчёт о работе",
+    "githubLink": "Ссылка на GitHub",
+    "demoLink": "Ссылка на демо",
+    "comment": "Комментарий / Отчёт",
+    "submit": "Отправить работу",
+    "feedback": "Обратная связь",
+    "approve": "Одобрить",
+    "requestChanges": "Запросить изменения",
+    "status": {
+      "submitted": "Отправлено",
+      "approved": "Одобрено",
+      "changes_requested": "Запрошены изменения"
+    }
+  },
+  "language": {
+    "label": "Язык",
+    "uz": "O'zbekcha",
+    "ru": "Русский",
+    "en": "English"
+  }
+}

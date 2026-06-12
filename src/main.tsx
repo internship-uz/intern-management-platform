@@ -4,6 +4,7 @@ import { RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "@/components/shared/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { router } from "@/router";
+import "@/i18n";
 import "@/styles/index.css";
 
 createRoot(document.getElementById("root")!).render(

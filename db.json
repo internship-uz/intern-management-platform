@@ -1,9 +1,31 @@
 {
-    "users": [
+  "users": [
     {
-      "id": "u1",
+      "id": "e0d99d21-50e8-490c-8823-a1f41f2cf744",
       "email": "admin@gmail.com",
-      "password": "password"
+      "password": "password",
+      "role": "admin"
+    },
+    {
+      "id": "a3d2b9dc-b9a1-49e7-9c42-0757d5f6bbb5",
+      "email": "javohir@intern.uz",
+      "password": "intern",
+      "role": "intern",
+      "internId": "i1"
+    },
+    {
+      "id": "758e6ab3-473f-4b83-882e-f30a9e02187e",
+      "email": "diyora@intern.uz",
+      "password": "intern",
+      "role": "intern",
+      "internId": "i2"
+    },
+    {
+      "id": "be556697-2db3-40bc-8140-5ee9f6f48bd4",
+      "email": "sherzod@intern.uz",
+      "password": "intern",
+      "role": "intern",
+      "internId": "i3"
     }
   ],
   "interns": [
@@ -261,6 +283,20 @@
       "id": "sfok8NSBctU",
       "key": "IM-603",
       "createdAt": "2026-05-19T10:05:57.819Z"
+    }
+  ],
+  "submissions": [
+    {
+      "id": "f668dbe3-20de-4631-bd5a-abfd0e5799e8",
+      "taskId": "t2",
+      "internId": "i1",
+      "githubLink": "https://github.com/javohir/auth-flow",
+      "demoLink": "https://auth-flow-demo.vercel.app",
+      "comment": "Sign-in formaga validatsiya qo'shildi, email va parol tekshiriladi.",
+      "status": "submitted",
+      "feedback": "",
+      "createdAt": "2026-05-18T09:00:00.000Z",
+      "updatedAt": "2026-05-18T09:00:00.000Z"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

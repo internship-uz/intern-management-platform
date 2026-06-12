@@ -1,0 +1,68 @@
+{
+  "common": {
+    "loading": "Yuklanmoqda...",
+    "error": "Xatolik yuz berdi",
+    "retry": "Qayta urinish",
+    "save": "Saqlash",
+    "cancel": "Bekor qilish",
+    "submit": "Yuborish",
+    "search": "Qidirish",
+    "logout": "Chiqish",
+    "empty": "Ma'lumot topilmadi"
+  },
+  "auth": {
+    "welcome": "Xush kelibsiz",
+    "email": "Email",
+    "password": "Parol",
+    "continue": "Davom etish",
+    "login": "Kirish",
+    "invalidCredentials": "Email yoki parol noto'g'ri"
+  },
+  "nav": {
+    "dashboard": "Boshqaruv paneli",
+    "interns": "Internlar",
+    "tasks": "Vazifalar",
+    "submissions": "Topshiriqlar",
+    "profile": "Profil",
+    "myTasks": "Mening vazifalarim"
+  },
+  "intern": {
+    "portalTitle": "Intern Portali",
+    "profile": "Profil",
+    "myTasks": "Mening vazifalarim",
+    "taskStatus": "Vazifa holati",
+    "deadline": "Muddat",
+    "direction": "Yo'nalish",
+    "level": "Daraja",
+    "joinedAt": "Qo'shilgan sana"
+  },
+  "task": {
+    "status": "Holat",
+    "priority": "Muhimlik",
+    "dueDate": "Muddat",
+    "todo": "Bajarilmagan",
+    "in_progress": "Jarayonda",
+    "done": "Bajarilgan"
+  },
+  "submission": {
+    "title": "Ish hisoboti",
+    "githubLink": "GitHub havola",
+    "demoLink": "Demo havola",
+    "comment": "Izoh / Ish hisoboti",
+    "submit": "Ishni yuborish",
+    "feedback": "Izoh (feedback)",
+    "approve": "Tasdiqlash",
+    "requestChanges": "O'zgartirish so'rash",
+    "status": {
+      "submitted": "Yuborilgan",
+      "approved": "Tasdiqlangan",
+      "changes_requested": "O'zgartirish so'ralgan"
+    }
+  },
+  "language": {
+    "label": "Til",
+    "uz": "O'zbekcha",
+    "ru": "Русский",
+    "en": "English"
+  }
+}

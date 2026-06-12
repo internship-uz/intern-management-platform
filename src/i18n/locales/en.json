@@ -1,0 +1,68 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Retry",
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "search": "Search",
+    "logout": "Log out",
+    "empty": "No data found"
+  },
+  "auth": {
+    "welcome": "Welcome",
+    "email": "Email",
+    "password": "Password",
+    "continue": "Continue",
+    "login": "Login",
+    "invalidCredentials": "Invalid email or password"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "interns": "Interns",
+    "tasks": "Tasks",
+    "submissions": "Submissions",
+    "profile": "Profile",
+    "myTasks": "My Tasks"
+  },
+  "intern": {
+    "portalTitle": "Intern Portal",
+    "profile": "Profile",
+    "myTasks": "My Tasks",
+    "taskStatus": "Task Status",
+    "deadline": "Deadline",
+    "direction": "Direction",
+    "level": "Level",
+    "joinedAt": "Joined at"
+  },
+  "task": {
+    "status": "Status",
+    "priority": "Priority",
+    "dueDate": "Due date",
+    "todo": "To do",
+    "in_progress": "In progress",
+    "done": "Done"
+  },
+  "submission": {
+    "title": "Work Report",
+    "githubLink": "GitHub link",
+    "demoLink": "Demo link",
+    "comment": "Comment / Work report",
+    "submit": "Submit work",
+    "feedback": "Feedback",
+    "approve": "Approve",
+    "requestChanges": "Request changes",
+    "status": {
+      "submitted": "Submitted",
+      "approved": "Approved",
+      "changes_requested": "Changes requested"
+    }
+  },
+  "language": {
+    "label": "Language",
+    "uz": "O'zbekcha",
+    "ru": "Русский",
+    "en": "English"
+  }
+}

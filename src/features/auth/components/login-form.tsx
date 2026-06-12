@@ -10,8 +10,9 @@ import {
 import { Input } from "@/components/ui/input"
 import { GalleryVerticalEndIcon, ChevronLeft } from "lucide-react"
 import { useState } from "react"
-import { apiClient } from "@/api/api-client"
 import { useNavigate } from "react-router-dom"
+import { authApi } from "../api/auth.api"
+import { setCurrentUser, getHomePathForRole } from "../lib/auth"
 
 export function LoginForm({
   className,
@@ -45,11 +46,11 @@ export function LoginForm({
     setError("")
     
     try {
-      const { data } = await apiClient.get(`/users?email=${email}&password=${password}`)
-      
-      if (data && data.length > 0) {
-        localStorage.setItem("user", JSON.stringify(data[0]))
-        navigate("/")
+      const authUser = await authApi.login(email, password)
+
+      if (authUser) {
+        setCurrentUser(authUser)
+        navigate(getHomePathForRole(authUser.role))
       } else {
         setError("Invalid email or password")
       }
