@@ -1,13 +1,19 @@
 import { useEffect } from "react";
+import { useShallow } from "zustand/react/shallow";
 import { useSubmissionsStore } from "../store/submissions.store";
 
 export function useSubmissions() {
-  const submissions = useSubmissionsStore((s) => s.submissions);
-  const loading = useSubmissionsStore((s) => s.loading);
-  const error = useSubmissionsStore((s) => s.error);
-  const fetched = useSubmissionsStore((s) => s.fetched);
-  const fetchAll = useSubmissionsStore((s) => s.fetchAll);
-  const reviewSubmission = useSubmissionsStore((s) => s.reviewSubmission);
+  const { submissions, loading, error, fetched, fetchAll, reviewSubmission } =
+    useSubmissionsStore(
+      useShallow((s) => ({
+        submissions: s.submissions,
+        loading: s.loading,
+        error: s.error,
+        fetched: s.fetched,
+        fetchAll: s.fetchAll,
+        reviewSubmission: s.reviewSubmission,
+      })),
+    );
 
   useEffect(() => {
     if (!fetched) fetchAll();
@@ -17,11 +23,16 @@ export function useSubmissions() {
 }
 
 export function useMySubmissions(internId: string | undefined) {
-  const submissions = useSubmissionsStore((s) => s.submissions);
-  const loading = useSubmissionsStore((s) => s.loading);
-  const error = useSubmissionsStore((s) => s.error);
-  const fetchByIntern = useSubmissionsStore((s) => s.fetchByIntern);
-  const submitWork = useSubmissionsStore((s) => s.submitWork);
+  const { submissions, loading, error, fetchByIntern, submitWork } =
+    useSubmissionsStore(
+      useShallow((s) => ({
+        submissions: s.submissions,
+        loading: s.loading,
+        error: s.error,
+        fetchByIntern: s.fetchByIntern,
+        submitWork: s.submitWork,
+      })),
+    );
 
   useEffect(() => {
     if (internId) fetchByIntern(internId);
