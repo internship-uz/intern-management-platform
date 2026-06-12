@@ -59,11 +59,6 @@ export default function InternDashboardPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="text-2xl font-bold">
-        {t("intern.greeting")}
-        {intern ? `, ${intern.name}` : ""} 👋
-      </h1>
-
       <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
         {cards.map((card) => (
           <Card key={card.label} size="sm">
