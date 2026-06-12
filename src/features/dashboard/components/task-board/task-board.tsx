@@ -87,6 +87,8 @@ export function TaskBoard({
   const query = useSearchStore((s) => s.query);
   const setQuery = useSearchStore((s) => s.setQuery);
   const [activeAssignee, setActiveAssignee] = useState<string | null>(null);
+  const [statusFilter, setStatusFilter] =
+    useState<FilterValue<TaskStatus>>("all");
   const [typeFilter, setTypeFilter] = useState<FilterValue<IssueType>>("all");
   const [priorityFilter, setPriorityFilter] =
     useState<FilterValue<TaskPriority>>("all");
@@ -103,6 +105,7 @@ export function TaskBoard({
     )
       return false;
     if (activeAssignee && t.assigneeId !== activeAssignee) return false;
+    if (statusFilter !== "all" && t.status !== statusFilter) return false;
     if (typeFilter !== "all" && t.type !== typeFilter) return false;
     if (priorityFilter !== "all" && t.priority !== priorityFilter)
       return false;
@@ -111,6 +114,7 @@ export function TaskBoard({
 
   const columns = getColumns(groupBy, interns, tasks);
   const activeFiltersCount =
+    (statusFilter !== "all" ? 1 : 0) +
     (typeFilter !== "all" ? 1 : 0) +
     (priorityFilter !== "all" ? 1 : 0) +
     (activeAssignee ? 1 : 0) +
@@ -119,6 +123,7 @@ export function TaskBoard({
   function clearFilters() {
     setQuery("");
     setActiveAssignee(null);
+    setStatusFilter("all");
     setTypeFilter("all");
     setPriorityFilter("all");
   }
@@ -161,6 +166,8 @@ export function TaskBoard({
         onAssigneeToggle={(id) =>
           setActiveAssignee((cur) => (cur === id ? null : id))
         }
+        statusFilter={statusFilter}
+        onStatusChange={setStatusFilter}
         typeFilter={typeFilter}
         onTypeChange={setTypeFilter}
         priorityFilter={priorityFilter}

@@ -1,7 +1,17 @@
+import { useState } from "react";
 import { useAuth } from "@/features/auth";
 import { useMyTasks } from "@/features/tasks";
 import { useIntern } from "@/features/interns";
-import { IssueList } from "@/features/dashboard";
+import {
+  BoardSkeleton,
+  BoardSummary,
+  IssueList,
+  ListSkeleton,
+  SummarySkeleton,
+  TaskBoard,
+  ViewTabs,
+  type DashboardView,
+} from "@/features/dashboard";
 import { SubmitWorkDialog } from "@/features/submissions";
 import { useTranslation } from "@/i18n";
 import { Button } from "@/components/ui/button";
@@ -11,11 +21,12 @@ export default function InternTasksPage() {
   const { t } = useTranslation();
   const { internId } = useAuth();
   const { intern } = useIntern(internId);
-  const { tasks, loading, error, refetch, updateTask } = useMyTasks(internId);
+  const { tasks, loading, error, refetch, updateTask, setTasks } =
+    useMyTasks(internId);
+  const [view, setView] = useState<DashboardView>("board");
 
-  if (loading && tasks.length === 0) {
-    return <p className="text-muted-foreground">{t("common.loading")}</p>;
-  }
+  const interns = intern ? [intern] : [];
+  const isInitialLoading = loading && tasks.length === 0;
 
   if (error) {
     return (
@@ -46,16 +57,32 @@ export default function InternTasksPage() {
         ) : null}
       </div>
 
-      {tasks.length === 0 ? (
-        <p className="text-muted-foreground">{t("common.empty")}</p>
+      <ViewTabs active={view} onChange={setView} />
+
+      {isInitialLoading ? (
+        <>
+          {view === "summary" && <SummarySkeleton />}
+          {view === "board" && <BoardSkeleton />}
+          {view === "list" && <ListSkeleton />}
+        </>
       ) : (
-        <IssueList
-          tasks={tasks}
-          interns={intern ? [intern] : []}
-          selectable={false}
-          onStatusChange={(id, status) => updateTask(id, { status })}
-          onPriorityChange={(id, priority) => updateTask(id, { priority })}
-        />
+        <>
+          {view === "summary" && (
+            <BoardSummary tasks={tasks} interns={interns} />
+          )}
+          {view === "board" && (
+            <TaskBoard tasks={tasks} onTasksChange={setTasks} interns={interns} />
+          )}
+          {view === "list" && (
+            <IssueList
+              tasks={tasks}
+              interns={interns}
+              selectable={false}
+              onStatusChange={(id, status) => updateTask(id, { status })}
+              onPriorityChange={(id, priority) => updateTask(id, { priority })}
+            />
+          )}
+        </>
       )}
     </div>
   );

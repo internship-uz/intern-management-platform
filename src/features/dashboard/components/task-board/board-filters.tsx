@@ -8,7 +8,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import type { Intern } from "@/features/interns";
-import type { IssueType, TaskPriority } from "@/features/tasks";
+import type { IssueType, TaskPriority, TaskStatus } from "@/features/tasks";
 import { cn } from "@/lib/utils";
 import { XIcon } from "lucide-react";
 
@@ -19,6 +19,8 @@ export interface BoardFiltersProps {
   members: Intern[];
   activeAssignee: string | null;
   onAssigneeToggle: (id: string) => void;
+  statusFilter: FilterValue<TaskStatus>;
+  onStatusChange: (v: FilterValue<TaskStatus>) => void;
   typeFilter: FilterValue<IssueType>;
   onTypeChange: (v: FilterValue<IssueType>) => void;
   priorityFilter: FilterValue<TaskPriority>;
@@ -33,6 +35,8 @@ export function BoardFilters({
   members,
   activeAssignee,
   onAssigneeToggle,
+  statusFilter,
+  onStatusChange,
   typeFilter,
   onTypeChange,
   priorityFilter,
@@ -66,6 +70,21 @@ export function BoardFilters({
             );
           })}
         </div>
+
+        <Select
+          value={statusFilter}
+          onValueChange={(v) => onStatusChange(v as FilterValue<TaskStatus>)}
+        >
+          <SelectTrigger size='sm' className='min-w-30'>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent alignItemWithTrigger={false}>
+            <SelectItem value='all'>All statuses</SelectItem>
+            <SelectItem value='todo'>To do</SelectItem>
+            <SelectItem value='in_progress'>In progress</SelectItem>
+            <SelectItem value='done'>Done</SelectItem>
+          </SelectContent>
+        </Select>
 
         <Select
           value={typeFilter}

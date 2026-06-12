@@ -8,6 +8,7 @@ interface UseMyTasksResult {
   error: string | null;
   refetch: () => void;
   updateTask: (id: string, patch: TaskPatch) => Promise<void>;
+  setTasks: (next: Task[]) => void;
 }
 
 /**
@@ -49,5 +50,12 @@ export function useMyTasks(internId: string | undefined): UseMyTasksResult {
     fetchMyTasks();
   }, [fetchMyTasks]);
 
-  return { tasks, loading, error, refetch: fetchMyTasks, updateTask };
+  return {
+    tasks,
+    loading,
+    error,
+    refetch: fetchMyTasks,
+    updateTask,
+    setTasks,
+  };
 }
