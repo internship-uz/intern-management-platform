@@ -8,6 +8,7 @@ import type {
   TaskStatus,
 } from "@/features/tasks";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/i18n";
 import { useSearchStore } from "@/store/search-store";
 import { useState } from "react";
 import { issueTypeMeta } from "../issue-meta";
@@ -41,6 +42,7 @@ export function IssueList({
   onDelete,
   selectable = true,
 }: IssueListProps) {
+  const { t } = useTranslation();
   const internMap = new Map(interns.map((i) => [i.id, i]));
   const [sortKey, setSortKey] = useState<SortKey>("priority");
   const [asc, setAsc] = useState(true);
@@ -124,15 +126,21 @@ export function IssueList({
               )}
               <th className='w-10 px-3 py-2 text-left font-medium'>#</th>
               <th className='w-8 px-3 py-2 text-left'>T</th>
-              <th className='px-3 py-2 text-left font-medium'>Title</th>
-              <th className='px-3 py-2 text-left font-medium'>Status</th>
+              <th className='px-3 py-2 text-left font-medium'>
+                {t("board.title")}
+              </th>
+              <th className='px-3 py-2 text-left font-medium'>
+                {t("task.status")}
+              </th>
               <SortableHeader
-                label='Priority'
+                label={t("task.priority")}
                 active={sortKey === "priority"}
                 asc={asc}
                 onClick={() => toggleSort("priority")}
               />
-              <th className='px-3 py-2 text-left font-medium'>Assignee</th>
+              <th className='px-3 py-2 text-left font-medium'>
+                {t("board.assignee")}
+              </th>
             </tr>
           </thead>
           <tbody className='divide-y divide-border/60'>
@@ -163,7 +171,7 @@ export function IssueList({
                   </td>
                   <td className='px-3 py-2'>
                     <span
-                      title={type.label}
+                      title={t(`type.${task.type}`)}
                       className={cn(
                         "flex size-4 items-center justify-center rounded-sm text-white",
                         type.bg
@@ -212,7 +220,7 @@ export function IssueList({
                       </div>
                     ) : (
                       <span className='text-xs text-muted-foreground'>
-                        Unassigned
+                        {t("board.unassigned")}
                       </span>
                     )}
                   </td>

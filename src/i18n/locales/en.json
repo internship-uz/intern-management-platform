@@ -24,7 +24,8 @@
     "tasks": "Tasks",
     "submissions": "Submissions",
     "profile": "Profile",
-    "myTasks": "My Tasks"
+    "myTasks": "My Tasks",
+    "platform": "Platform"
   },
   "intern": {
     "portalTitle": "Intern Portal",
@@ -69,6 +70,55 @@
       "approved": "Approved",
       "changes_requested": "Changes requested"
     }
+  },
+  "view": {
+    "summary": "Summary",
+    "board": "Board",
+    "list": "List"
+  },
+  "type": {
+    "story": "Story",
+    "task": "Task",
+    "bug": "Bug",
+    "epic": "Epic"
+  },
+  "priority": {
+    "highest": "Highest",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low",
+    "lowest": "Lowest"
+  },
+  "board": {
+    "groupBy": "Group by",
+    "allStatuses": "All statuses",
+    "allTypes": "All types",
+    "allPriorities": "All priorities",
+    "clear": "Clear",
+    "title": "Title",
+    "assignee": "Assignee",
+    "unassigned": "Unassigned",
+    "type": "Type",
+    "empty": "No issues",
+    "dropHere": "Drop here",
+    "noGroup": "Nothing in this group",
+    "priorityBreakdown": "Priority breakdown",
+    "teamWorkload": "Team workload",
+    "workDistribution": "Work distribution",
+    "selectAll": "Select all",
+    "editFields": "Edit fields",
+    "delete": "Delete",
+    "selected": "{{count}} selected"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "markAll": "All",
+    "clear": "Clear",
+    "empty": "No notifications yet",
+    "now": "now",
+    "minutesAgo": "{{count}} min ago",
+    "hoursAgo": "{{count}} h ago",
+    "daysAgo": "{{count}} d ago"
   },
   "language": {
     "label": "Language",

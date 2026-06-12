@@ -24,7 +24,8 @@
     "tasks": "Vazifalar",
     "submissions": "Topshiriqlar",
     "profile": "Profil",
-    "myTasks": "Mening vazifalarim"
+    "myTasks": "Mening vazifalarim",
+    "platform": "Platforma"
   },
   "intern": {
     "portalTitle": "Intern Portali",
@@ -69,6 +70,55 @@
       "approved": "Tasdiqlangan",
       "changes_requested": "O'zgartirish so'ralgan"
     }
+  },
+  "view": {
+    "summary": "Xulosa",
+    "board": "Doska",
+    "list": "Ro'yxat"
+  },
+  "type": {
+    "story": "Story",
+    "task": "Vazifa",
+    "bug": "Xato",
+    "epic": "Epik"
+  },
+  "priority": {
+    "highest": "Eng yuqori",
+    "high": "Yuqori",
+    "medium": "O'rta",
+    "low": "Past",
+    "lowest": "Eng past"
+  },
+  "board": {
+    "groupBy": "Guruhlash",
+    "allStatuses": "Barcha holatlar",
+    "allTypes": "Barcha turlar",
+    "allPriorities": "Barcha muhimliklar",
+    "clear": "Tozalash",
+    "title": "Sarlavha",
+    "assignee": "Mas'ul",
+    "unassigned": "Tayinlanmagan",
+    "type": "Tur",
+    "empty": "Vazifalar yo'q",
+    "dropHere": "Bu yerga tashlang",
+    "noGroup": "Bu guruhda hech narsa yo'q",
+    "priorityBreakdown": "Muhimlik taqsimoti",
+    "teamWorkload": "Jamoa yuklamasi",
+    "workDistribution": "Ish taqsimoti",
+    "selectAll": "Hammasini tanlash",
+    "editFields": "Maydonlarni tahrirlash",
+    "delete": "O'chirish",
+    "selected": "{{count}} tanlandi"
+  },
+  "notifications": {
+    "title": "Bildirishnomalar",
+    "markAll": "Hammasi",
+    "clear": "Tozalash",
+    "empty": "Hozircha bildirishnoma yo'q",
+    "now": "hozir",
+    "minutesAgo": "{{count}} daq oldin",
+    "hoursAgo": "{{count}} soat oldin",
+    "daysAgo": "{{count}} kun oldin"
   },
   "language": {
     "label": "Til",

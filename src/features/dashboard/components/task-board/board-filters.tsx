@@ -10,6 +10,7 @@ import {
 import type { Intern } from "@/features/interns";
 import type { IssueType, TaskPriority, TaskStatus } from "@/features/tasks";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/i18n";
 import { XIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
@@ -47,6 +48,7 @@ export function BoardFilters({
   activeCount,
   onClear,
 }: BoardFiltersProps) {
+  const { t } = useTranslation();
   return (
     <div className='flex flex-wrap items-center justify-between gap-3'>
       <div className='flex flex-wrap items-center gap-2'>
@@ -72,7 +74,7 @@ export function BoardFilters({
           })}
         </div>
 
-        <FilterField label='Status'>
+        <FilterField label={t("task.status")}>
           <Select
             value={statusFilter}
             onValueChange={(v) => onStatusChange(v as FilterValue<TaskStatus>)}
@@ -81,15 +83,17 @@ export function BoardFilters({
               <SelectValue />
             </SelectTrigger>
             <SelectContent alignItemWithTrigger={false}>
-              <SelectItem value='all'>All statuses</SelectItem>
-              <SelectItem value='todo'>To do</SelectItem>
-              <SelectItem value='in_progress'>In progress</SelectItem>
-              <SelectItem value='done'>Done</SelectItem>
+              <SelectItem value='all'>{t("board.allStatuses")}</SelectItem>
+              <SelectItem value='todo'>{t("task.todo")}</SelectItem>
+              <SelectItem value='in_progress'>
+                {t("task.in_progress")}
+              </SelectItem>
+              <SelectItem value='done'>{t("task.done")}</SelectItem>
             </SelectContent>
           </Select>
         </FilterField>
 
-        <FilterField label='Type'>
+        <FilterField label={t("board.type")}>
           <Select
             value={typeFilter}
             onValueChange={(v) => onTypeChange(v as FilterValue<IssueType>)}
@@ -98,16 +102,16 @@ export function BoardFilters({
               <SelectValue />
             </SelectTrigger>
             <SelectContent alignItemWithTrigger={false}>
-              <SelectItem value='all'>All types</SelectItem>
-              <SelectItem value='story'>Story</SelectItem>
-              <SelectItem value='task'>Task</SelectItem>
-              <SelectItem value='bug'>Bug</SelectItem>
-              <SelectItem value='epic'>Epic</SelectItem>
+              <SelectItem value='all'>{t("board.allTypes")}</SelectItem>
+              <SelectItem value='story'>{t("type.story")}</SelectItem>
+              <SelectItem value='task'>{t("type.task")}</SelectItem>
+              <SelectItem value='bug'>{t("type.bug")}</SelectItem>
+              <SelectItem value='epic'>{t("type.epic")}</SelectItem>
             </SelectContent>
           </Select>
         </FilterField>
 
-        <FilterField label='Priority'>
+        <FilterField label={t("task.priority")}>
           <Select
             value={priorityFilter}
             onValueChange={(v) =>
@@ -118,12 +122,12 @@ export function BoardFilters({
               <SelectValue />
             </SelectTrigger>
             <SelectContent alignItemWithTrigger={false}>
-              <SelectItem value='all'>All priorities</SelectItem>
-              <SelectItem value='highest'>Highest</SelectItem>
-              <SelectItem value='high'>High</SelectItem>
-              <SelectItem value='medium'>Medium</SelectItem>
-              <SelectItem value='low'>Low</SelectItem>
-              <SelectItem value='lowest'>Lowest</SelectItem>
+              <SelectItem value='all'>{t("board.allPriorities")}</SelectItem>
+              <SelectItem value='highest'>{t("priority.highest")}</SelectItem>
+              <SelectItem value='high'>{t("priority.high")}</SelectItem>
+              <SelectItem value='medium'>{t("priority.medium")}</SelectItem>
+              <SelectItem value='low'>{t("priority.low")}</SelectItem>
+              <SelectItem value='lowest'>{t("priority.lowest")}</SelectItem>
             </SelectContent>
           </Select>
         </FilterField>
@@ -136,12 +140,12 @@ export function BoardFilters({
             onClick={onClear}
           >
             <XIcon data-icon='inline-start' />
-            Clear ({activeCount})
+            {t("board.clear")} ({activeCount})
           </Button>
         )}
       </div>
 
-      <FilterField label='Group by'>
+      <FilterField label={t("board.groupBy")}>
         <Select
           value={groupBy}
           onValueChange={(v) => onGroupByChange(v as GroupBy)}
@@ -150,10 +154,10 @@ export function BoardFilters({
             <SelectValue />
           </SelectTrigger>
           <SelectContent alignItemWithTrigger={false}>
-            <SelectItem value='status'>Status</SelectItem>
-            <SelectItem value='assignee'>Assignee</SelectItem>
-            <SelectItem value='priority'>Priority</SelectItem>
-            <SelectItem value='type'>Type</SelectItem>
+            <SelectItem value='status'>{t("task.status")}</SelectItem>
+            <SelectItem value='assignee'>{t("board.assignee")}</SelectItem>
+            <SelectItem value='priority'>{t("task.priority")}</SelectItem>
+            <SelectItem value='type'>{t("board.type")}</SelectItem>
           </SelectContent>
         </Select>
       </FilterField>

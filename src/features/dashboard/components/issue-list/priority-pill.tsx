@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/select";
 import type { TaskPriority } from "@/features/tasks";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/i18n";
 import { priorityMeta } from "../issue-meta";
 
 export interface PriorityPillProps {
@@ -23,6 +24,7 @@ const priorities: TaskPriority[] = [
 ];
 
 export function PriorityPill({ priority, onChange }: PriorityPillProps) {
+  const { t } = useTranslation();
   const meta = priorityMeta[priority];
   const Icon = meta.icon;
   return (
@@ -33,7 +35,7 @@ export function PriorityPill({ priority, onChange }: PriorityPillProps) {
       <SelectTrigger size='sm' className='h-6 gap-1.5 border-0 px-1.5 text-xs'>
         <SelectValue>
           <Icon className={cn("size-3.5", meta.color)} />
-          <span>{meta.label}</span>
+          <span>{t(`priority.${priority}`)}</span>
         </SelectValue>
       </SelectTrigger>
       <SelectContent alignItemWithTrigger={false}>
@@ -43,7 +45,7 @@ export function PriorityPill({ priority, onChange }: PriorityPillProps) {
           return (
             <SelectItem key={p} value={p}>
               <PIcon className={cn("size-3.5", pm.color)} />
-              <span>{pm.label}</span>
+              <span>{t(`priority.${p}`)}</span>
             </SelectItem>
           );
         })}

@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom"
+import { useTranslation } from "@/i18n"
 import {
   Collapsible,
   CollapsibleContent,
@@ -30,9 +31,10 @@ export function NavMain({
     }[]
   }[]
 }) {
+  const { t } = useTranslation()
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
+      <SidebarGroupLabel>{t("nav.platform")}</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) =>
           item.items?.length ? (

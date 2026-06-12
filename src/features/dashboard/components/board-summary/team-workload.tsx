@@ -1,6 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import type { Intern } from "@/features/interns";
 import type { Task } from "@/features/tasks";
+import { useTranslation } from "@/i18n";
 import { Panel } from "./panel";
 
 export interface TeamWorkloadProps {
@@ -9,6 +10,7 @@ export interface TeamWorkloadProps {
 }
 
 export function TeamWorkload({ tasks, interns }: TeamWorkloadProps) {
+  const { t } = useTranslation();
   const total = tasks.length || 1;
   const rows = interns
     .map((intern) => {
@@ -24,12 +26,12 @@ export function TeamWorkload({ tasks, interns }: TeamWorkloadProps) {
     .slice(0, 6);
 
   return (
-    <Panel title='Team workload'>
+    <Panel title={t("board.teamWorkload")}>
       <table className='w-full text-xs'>
         <thead>
           <tr className='text-left text-[11px] font-medium tracking-wide text-muted-foreground uppercase'>
-            <th className='pb-2 font-medium'>Assignee</th>
-            <th className='pb-2 font-medium'>Work distribution</th>
+            <th className='pb-2 font-medium'>{t("board.assignee")}</th>
+            <th className='pb-2 font-medium'>{t("board.workDistribution")}</th>
           </tr>
         </thead>
         <tbody>

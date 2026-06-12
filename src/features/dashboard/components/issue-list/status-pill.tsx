@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/select";
 import type { TaskStatus } from "@/features/tasks";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/i18n";
 import { statusMeta } from "../issue-meta";
 
 export interface StatusPillProps {
@@ -15,6 +16,7 @@ export interface StatusPillProps {
 }
 
 export function StatusPill({ status, onChange }: StatusPillProps) {
+  const { t } = useTranslation();
   const meta = statusMeta[status];
   return (
     <Select value={status} onValueChange={(v) => onChange(v as TaskStatus)}>
@@ -28,9 +30,9 @@ export function StatusPill({ status, onChange }: StatusPillProps) {
         <SelectValue />
       </SelectTrigger>
       <SelectContent alignItemWithTrigger={false}>
-        <SelectItem value='todo'>To do</SelectItem>
-        <SelectItem value='in_progress'>In progress</SelectItem>
-        <SelectItem value='done'>Done</SelectItem>
+        <SelectItem value='todo'>{t("task.todo")}</SelectItem>
+        <SelectItem value='in_progress'>{t("task.in_progress")}</SelectItem>
+        <SelectItem value='done'>{t("task.done")}</SelectItem>
       </SelectContent>
     </Select>
   );

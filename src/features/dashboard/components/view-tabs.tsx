@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/i18n";
 import {
   KanbanSquareIcon,
   LayoutListIcon,
@@ -8,10 +9,10 @@ import type { LucideIcon } from "lucide-react";
 
 export type DashboardView = "summary" | "board" | "list";
 
-const tabs: { key: DashboardView; label: string; icon: LucideIcon }[] = [
-  { key: "summary", label: "Summary", icon: PanelsTopLeftIcon },
-  { key: "board", label: "Board", icon: KanbanSquareIcon },
-  { key: "list", label: "List", icon: LayoutListIcon },
+const tabs: { key: DashboardView; icon: LucideIcon }[] = [
+  { key: "summary", icon: PanelsTopLeftIcon },
+  { key: "board", icon: KanbanSquareIcon },
+  { key: "list", icon: LayoutListIcon },
 ];
 
 export function ViewTabs({
@@ -21,6 +22,7 @@ export function ViewTabs({
   active: DashboardView;
   onChange: (v: DashboardView) => void;
 }) {
+  const { t } = useTranslation();
   return (
     <div className='flex items-center gap-1 border-b border-border/60'>
       {tabs.map((tab) => {
@@ -38,7 +40,7 @@ export function ViewTabs({
             )}
           >
             <Icon className='size-3.5' />
-            {tab.label}
+            {t(`view.${tab.key}`)}
           </button>
         );
       })}

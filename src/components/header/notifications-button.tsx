@@ -5,6 +5,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/i18n";
 import { useNotificationsStore } from "@/store/notifications-store";
 import {
   BellIcon,
@@ -44,18 +45,21 @@ const kindMeta: Record<
   },
 };
 
-function relativeTime(ts: number, now: number) {
+type TFunc = ReturnType<typeof useTranslation>["t"];
+
+function relativeTime(ts: number, now: number, t: TFunc) {
   const diff = now - ts;
   const minutes = Math.round(diff / 60_000);
-  if (minutes < 1) return "hozir";
-  if (minutes < 60) return `${minutes} daq oldin`;
+  if (minutes < 1) return t("notifications.now");
+  if (minutes < 60) return t("notifications.minutesAgo", { count: minutes });
   const hours = Math.round(minutes / 60);
-  if (hours < 24) return `${hours} soat oldin`;
+  if (hours < 24) return t("notifications.hoursAgo", { count: hours });
   const days = Math.round(hours / 24);
-  return `${days} kun oldin`;
+  return t("notifications.daysAgo", { count: days });
 }
 
 export function NotificationsButton() {
+  const { t } = useTranslation();
   const items = useNotificationsStore((s) => s.items);
   const markAllAsRead = useNotificationsStore((s) => s.markAllAsRead);
   const markAsRead = useNotificationsStore((s) => s.markAsRead);
@@ -80,7 +84,9 @@ export function NotificationsButton() {
       />
       <PopoverContent align='end' className='w-80 p-0'>
         <div className='flex items-center justify-between border-b border-border/60 px-3 py-2.5'>
-          <span className='text-sm font-semibold'>Bildirishnomalar</span>
+          <span className='text-sm font-semibold'>
+            {t("notifications.title")}
+          </span>
           <div className='flex items-center gap-2'>
             {unreadCount > 0 && (
               <button
@@ -88,7 +94,7 @@ export function NotificationsButton() {
                 className='inline-flex items-center gap-1 text-xs text-primary hover:underline'
               >
                 <CheckCircle2Icon className='size-3' />
-                Hammasi
+                {t("notifications.markAll")}
               </button>
             )}
             {items.length > 0 && (
@@ -96,7 +102,7 @@ export function NotificationsButton() {
                 onClick={clearAll}
                 className='text-xs text-muted-foreground hover:text-foreground'
               >
-                Tozalash
+                {t("notifications.clear")}
               </button>
             )}
           </div>
@@ -107,7 +113,7 @@ export function NotificationsButton() {
             <li className='flex flex-col items-center gap-2 px-3 py-10 text-center'>
               <BellIcon className='size-6 text-muted-foreground/60' />
               <span className='text-xs text-muted-foreground'>
-                Hozircha bildirishnoma yo‘q
+                {t("notifications.empty")}
               </span>
             </li>
           )}
@@ -147,7 +153,7 @@ export function NotificationsButton() {
                     {n.description}
                   </p>
                   <span className='text-[10px] text-muted-foreground'>
-                    {relativeTime(n.createdAt, now)}
+                    {relativeTime(n.createdAt, now, t)}
                   </span>
                 </div>
               </li>

@@ -24,7 +24,8 @@
     "tasks": "Задачи",
     "submissions": "Работы",
     "profile": "Профиль",
-    "myTasks": "Мои задачи"
+    "myTasks": "Мои задачи",
+    "platform": "Платформа"
   },
   "intern": {
     "portalTitle": "Портал стажёра",
@@ -69,6 +70,55 @@
       "approved": "Одобрено",
       "changes_requested": "Запрошены изменения"
     }
+  },
+  "view": {
+    "summary": "Сводка",
+    "board": "Доска",
+    "list": "Список"
+  },
+  "type": {
+    "story": "История",
+    "task": "Задача",
+    "bug": "Баг",
+    "epic": "Эпик"
+  },
+  "priority": {
+    "highest": "Высочайший",
+    "high": "Высокий",
+    "medium": "Средний",
+    "low": "Низкий",
+    "lowest": "Низший"
+  },
+  "board": {
+    "groupBy": "Группировать",
+    "allStatuses": "Все статусы",
+    "allTypes": "Все типы",
+    "allPriorities": "Все приоритеты",
+    "clear": "Очистить",
+    "title": "Заголовок",
+    "assignee": "Исполнитель",
+    "unassigned": "Не назначен",
+    "type": "Тип",
+    "empty": "Нет задач",
+    "dropHere": "Перетащите сюда",
+    "noGroup": "В этой группе ничего нет",
+    "priorityBreakdown": "Распределение по приоритету",
+    "teamWorkload": "Загрузка команды",
+    "workDistribution": "Распределение работы",
+    "selectAll": "Выбрать все",
+    "editFields": "Изменить поля",
+    "delete": "Удалить",
+    "selected": "{{count}} выбрано"
+  },
+  "notifications": {
+    "title": "Уведомления",
+    "markAll": "Все",
+    "clear": "Очистить",
+    "empty": "Уведомлений пока нет",
+    "now": "сейчас",
+    "minutesAgo": "{{count}} мин назад",
+    "hoursAgo": "{{count}} ч назад",
+    "daysAgo": "{{count}} дн назад"
   },
   "language": {
     "label": "Язык",

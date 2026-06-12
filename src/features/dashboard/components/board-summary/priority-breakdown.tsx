@@ -1,5 +1,6 @@
 import type { Task, TaskPriority } from "@/features/tasks";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/i18n";
 import { priorityMeta } from "../issue-meta";
 import { Panel } from "./panel";
 
@@ -16,6 +17,7 @@ export interface PriorityBreakdownProps {
 }
 
 export function PriorityBreakdown({ tasks }: PriorityBreakdownProps) {
+  const { t } = useTranslation();
   const priorities: TaskPriority[] = [
     "highest",
     "high",
@@ -31,7 +33,7 @@ export function PriorityBreakdown({ tasks }: PriorityBreakdownProps) {
   const tickLabels = Array.from({ length: ticks + 1 }).map((_, i) => i);
 
   return (
-    <Panel title='Priority breakdown'>
+    <Panel title={t("board.priorityBreakdown")}>
       <div className='flex h-56 gap-2'>
         <div className='flex flex-col-reverse justify-between py-1 pr-1 text-[11px] text-muted-foreground tabular-nums'>
           {tickLabels.map((label) => (
@@ -54,12 +56,11 @@ export function PriorityBreakdown({ tasks }: PriorityBreakdownProps) {
             {priorities.map((p, idx) => {
               const count = counts[idx];
               const heightPercent = (count / ticks) * 100;
-              const meta = priorityMeta[p];
               return (
                 <div
                   key={p}
                   className='relative z-10 flex h-full flex-1 flex-col items-center justify-end'
-                  title={`${meta.label}: ${count}`}
+                  title={`${t(`priority.${p}`)}: ${count}`}
                 >
                   {count > 0 && (
                     <span className='mb-1 text-[10px] font-semibold tabular-nums text-muted-foreground'>
@@ -88,7 +89,7 @@ export function PriorityBreakdown({ tasks }: PriorityBreakdownProps) {
                   className='flex flex-1 items-center justify-center gap-1'
                 >
                   <Icon className={cn("size-3", meta.color)} />
-                  <span className='truncate'>{meta.label}</span>
+                  <span className='truncate'>{t(`priority.${p}`)}</span>
                 </div>
               );
             })}

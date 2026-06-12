@@ -7,8 +7,11 @@ import type {
   TaskStatus,
 } from "@/features/tasks";
 import { useSearchStore } from "@/store/search-store";
+import { useTranslation } from "@/i18n";
 import { useState } from "react";
-import { priorityMeta, statusMeta } from "../issue-meta";
+import { statusMeta } from "../issue-meta";
+
+type TFunc = ReturnType<typeof useTranslation>["t"];
 import {
   BoardFilters,
   type FilterValue,
@@ -24,27 +27,27 @@ interface ColumnDef {
 function getColumns(
   groupBy: GroupBy,
   interns: Intern[],
-  tasks: Task[]
+  tasks: Task[],
+  t: TFunc
 ): ColumnDef[] {
   if (groupBy === "status") {
-    return [
-      { key: "todo", title: "TO DO" },
-      { key: "in_progress", title: "IN PROGRESS" },
-      { key: "done", title: "DONE" },
-    ];
+    return (["todo", "in_progress", "done"] as TaskStatus[]).map((s) => ({
+      key: s,
+      title: t(`task.${s}`).toUpperCase(),
+    }));
   }
   if (groupBy === "priority") {
     return (
       ["highest", "high", "medium", "low", "lowest"] as TaskPriority[]
-    ).map((p) => ({ key: p, title: priorityMeta[p].label.toUpperCase() }));
+    ).map((p) => ({ key: p, title: t(`priority.${p}`).toUpperCase() }));
   }
   if (groupBy === "type") {
-    return (["story", "task", "bug", "epic"] as IssueType[]).map((t) => ({
-      key: t,
-      title: t.toUpperCase(),
+    return (["story", "task", "bug", "epic"] as IssueType[]).map((type) => ({
+      key: type,
+      title: t(`type.${type}`).toUpperCase(),
     }));
   }
-  const assignedIds = new Set(tasks.map((t) => t.assigneeId));
+  const assignedIds = new Set(tasks.map((task) => task.assigneeId));
   return interns
     .filter((i) => assignedIds.has(i.id))
     .map((i) => ({ key: i.id, title: i.name.toUpperCase() }));
@@ -80,6 +83,7 @@ export function TaskBoard({
   onTasksChange,
   interns,
 }: TaskBoardProps) {
+  const { t } = useTranslation();
   const [drag, setDrag] = useState<DragState | null>(null);
   const [overColumn, setOverColumn] = useState<string | null>(null);
   const [overTaskId, setOverTaskId] = useState<string | null>(null);
@@ -112,7 +116,7 @@ export function TaskBoard({
     return true;
   });
 
-  const columns = getColumns(groupBy, interns, tasks);
+  const columns = getColumns(groupBy, interns, tasks, t);
   const activeFiltersCount =
     (statusFilter !== "all" ? 1 : 0) +
     (typeFilter !== "all" ? 1 : 0) +
@@ -188,7 +192,7 @@ export function TaskBoard({
       >
         {columns.length === 0 && (
           <div className='rounded-md border border-dashed border-border/50 p-8 text-center text-xs text-muted-foreground'>
-            Bu guruh bo‘yicha hech narsa yo‘q
+            {t("board.noGroup")}
           </div>
         )}
         {columns.map((col) => {
@@ -246,7 +250,7 @@ export function TaskBoard({
                       isOver && "border-primary/40 text-primary"
                     )}
                   >
-                    {isOver ? "Bu yerga tashlang" : "Issuelar yo‘q"}
+                    {isOver ? t("board.dropHere") : t("board.empty")}
                   </div>
                 ) : (
                   items.map((task) => (
