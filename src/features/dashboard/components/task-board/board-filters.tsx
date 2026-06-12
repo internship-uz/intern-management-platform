@@ -11,6 +11,7 @@ import type { Intern } from "@/features/interns";
 import type { IssueType, TaskPriority, TaskStatus } from "@/features/tasks";
 import { cn } from "@/lib/utils";
 import { XIcon } from "lucide-react";
+import type { ReactNode } from "react";
 
 export type GroupBy = "status" | "assignee" | "priority" | "type";
 export type FilterValue<T> = T | "all";
@@ -71,66 +72,76 @@ export function BoardFilters({
           })}
         </div>
 
-        <Select
-          value={statusFilter}
-          onValueChange={(v) => onStatusChange(v as FilterValue<TaskStatus>)}
-        >
-          <SelectTrigger size='sm' className='min-w-30'>
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent alignItemWithTrigger={false}>
-            <SelectItem value='all'>All statuses</SelectItem>
-            <SelectItem value='todo'>To do</SelectItem>
-            <SelectItem value='in_progress'>In progress</SelectItem>
-            <SelectItem value='done'>Done</SelectItem>
-          </SelectContent>
-        </Select>
+        <FilterField label='Status'>
+          <Select
+            value={statusFilter}
+            onValueChange={(v) => onStatusChange(v as FilterValue<TaskStatus>)}
+          >
+            <SelectTrigger size='sm' className='min-w-30'>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent alignItemWithTrigger={false}>
+              <SelectItem value='all'>All statuses</SelectItem>
+              <SelectItem value='todo'>To do</SelectItem>
+              <SelectItem value='in_progress'>In progress</SelectItem>
+              <SelectItem value='done'>Done</SelectItem>
+            </SelectContent>
+          </Select>
+        </FilterField>
 
-        <Select
-          value={typeFilter}
-          onValueChange={(v) => onTypeChange(v as FilterValue<IssueType>)}
-        >
-          <SelectTrigger size='sm' className='min-w-30'>
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent alignItemWithTrigger={false}>
-            <SelectItem value='all'>All types</SelectItem>
-            <SelectItem value='story'>Story</SelectItem>
-            <SelectItem value='task'>Task</SelectItem>
-            <SelectItem value='bug'>Bug</SelectItem>
-            <SelectItem value='epic'>Epic</SelectItem>
-          </SelectContent>
-        </Select>
+        <FilterField label='Type'>
+          <Select
+            value={typeFilter}
+            onValueChange={(v) => onTypeChange(v as FilterValue<IssueType>)}
+          >
+            <SelectTrigger size='sm' className='min-w-30'>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent alignItemWithTrigger={false}>
+              <SelectItem value='all'>All types</SelectItem>
+              <SelectItem value='story'>Story</SelectItem>
+              <SelectItem value='task'>Task</SelectItem>
+              <SelectItem value='bug'>Bug</SelectItem>
+              <SelectItem value='epic'>Epic</SelectItem>
+            </SelectContent>
+          </Select>
+        </FilterField>
 
-        <Select
-          value={priorityFilter}
-          onValueChange={(v) =>
-            onPriorityChange(v as FilterValue<TaskPriority>)
-          }
-        >
-          <SelectTrigger size='sm' className='min-w-35'>
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent alignItemWithTrigger={false}>
-            <SelectItem value='all'>All priorities</SelectItem>
-            <SelectItem value='highest'>Highest</SelectItem>
-            <SelectItem value='high'>High</SelectItem>
-            <SelectItem value='medium'>Medium</SelectItem>
-            <SelectItem value='low'>Low</SelectItem>
-            <SelectItem value='lowest'>Lowest</SelectItem>
-          </SelectContent>
-        </Select>
+        <FilterField label='Priority'>
+          <Select
+            value={priorityFilter}
+            onValueChange={(v) =>
+              onPriorityChange(v as FilterValue<TaskPriority>)
+            }
+          >
+            <SelectTrigger size='sm' className='min-w-35'>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent alignItemWithTrigger={false}>
+              <SelectItem value='all'>All priorities</SelectItem>
+              <SelectItem value='highest'>Highest</SelectItem>
+              <SelectItem value='high'>High</SelectItem>
+              <SelectItem value='medium'>Medium</SelectItem>
+              <SelectItem value='low'>Low</SelectItem>
+              <SelectItem value='lowest'>Lowest</SelectItem>
+            </SelectContent>
+          </Select>
+        </FilterField>
 
         {activeCount > 0 && (
-          <Button variant='ghost' size='xs' onClick={onClear}>
+          <Button
+            variant='ghost'
+            size='xs'
+            className='self-end'
+            onClick={onClear}
+          >
             <XIcon data-icon='inline-start' />
             Clear ({activeCount})
           </Button>
         )}
       </div>
 
-      <div className='flex items-center gap-2 text-xs text-muted-foreground'>
-        <span className='tracking-wide'>GROUP BY</span>
+      <FilterField label='Group by'>
         <Select
           value={groupBy}
           onValueChange={(v) => onGroupByChange(v as GroupBy)}
@@ -145,7 +156,24 @@ export function BoardFilters({
             <SelectItem value='type'>Type</SelectItem>
           </SelectContent>
         </Select>
-      </div>
+      </FilterField>
+    </div>
+  );
+}
+
+function FilterField({
+  label,
+  children,
+}: {
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className='flex flex-col gap-1'>
+      <span className='text-[10px] font-medium tracking-wide text-muted-foreground uppercase'>
+        {label}
+      </span>
+      {children}
     </div>
   );
 }
