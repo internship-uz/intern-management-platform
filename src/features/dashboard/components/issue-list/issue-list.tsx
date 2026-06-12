@@ -28,6 +28,8 @@ export interface IssueListProps {
   onPriorityChange: (taskId: string, priority: TaskPriority) => void;
   onUpdateTask?: (taskId: string, patch: TaskPatch) => void;
   onDelete?: (taskIds: string[]) => void;
+  /** Qatorlarni tanlash/o'chirish (admin) imkoniyati. Intern uchun false. */
+  selectable?: boolean;
 }
 
 export function IssueList({
@@ -37,6 +39,7 @@ export function IssueList({
   onPriorityChange,
   onUpdateTask,
   onDelete,
+  selectable = true,
 }: IssueListProps) {
   const internMap = new Map(interns.map((i) => [i.id, i]));
   const [sortKey, setSortKey] = useState<SortKey>("priority");
@@ -106,17 +109,19 @@ export function IssueList({
         <table className='w-full text-sm'>
           <thead className='bg-muted/40 text-[11px] font-medium tracking-wide text-muted-foreground uppercase'>
             <tr>
-              <th className='w-8 px-3 py-2 text-left'>
-                <Checkbox
-                  checked={allSelected}
-                  indeterminate={someSelected}
-                  onCheckedChange={(v) => {
-                    if (v) selectAll();
-                    else clearSelection();
-                  }}
-                  aria-label='Select all'
-                />
-              </th>
+              {selectable && (
+                <th className='w-8 px-3 py-2 text-left'>
+                  <Checkbox
+                    checked={allSelected}
+                    indeterminate={someSelected}
+                    onCheckedChange={(v) => {
+                      if (v) selectAll();
+                      else clearSelection();
+                    }}
+                    aria-label='Select all'
+                  />
+                </th>
+              )}
               <th className='w-10 px-3 py-2 text-left font-medium'>#</th>
               <th className='w-8 px-3 py-2 text-left'>T</th>
               <th className='px-3 py-2 text-left font-medium'>Title</th>
@@ -142,15 +147,17 @@ export function IssueList({
                   data-selected={isSelected}
                   className='group transition-colors hover:bg-muted/40 data-[selected=true]:bg-primary/5'
                 >
-                  <td className='px-3 py-2'>
-                    <Checkbox
-                      checked={isSelected}
-                      onCheckedChange={(v) =>
-                        toggleSelected(task.id, v === true)
-                      }
-                      aria-label={`Select row ${index + 1}`}
-                    />
-                  </td>
+                  {selectable && (
+                    <td className='px-3 py-2'>
+                      <Checkbox
+                        checked={isSelected}
+                        onCheckedChange={(v) =>
+                          toggleSelected(task.id, v === true)
+                        }
+                        aria-label={`Select row ${index + 1}`}
+                      />
+                    </td>
+                  )}
                   <td className='px-3 py-2 font-medium text-muted-foreground tabular-nums'>
                     {index + 1}
                   </td>
@@ -216,21 +223,25 @@ export function IssueList({
         </table>
       </div>
 
-      <SelectionActionBar
-        selectedCount={selected.size}
-        onSelectAll={selectAll}
-        onEditFields={() => setEditOpen(true)}
-        onDelete={handleDelete}
-        onClear={clearSelection}
-      />
+      {selectable && (
+        <>
+          <SelectionActionBar
+            selectedCount={selected.size}
+            onSelectAll={selectAll}
+            onEditFields={() => setEditOpen(true)}
+            onDelete={handleDelete}
+            onClear={clearSelection}
+          />
 
-      <EditFieldsDialog
-        open={editOpen}
-        tasks={tasks.filter((t) => selected.has(t.id))}
-        interns={interns}
-        onClose={() => setEditOpen(false)}
-        onApply={handleApplyEdit}
-      />
+          <EditFieldsDialog
+            open={editOpen}
+            tasks={tasks.filter((t) => selected.has(t.id))}
+            interns={interns}
+            onClose={() => setEditOpen(false)}
+            onApply={handleApplyEdit}
+          />
+        </>
+      )}
     </div>
   );
 }

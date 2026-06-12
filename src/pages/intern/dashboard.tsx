@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { useAuth } from "@/features/auth";
-import { useMyTasks, InternTaskCard } from "@/features/tasks";
+import { useMyTasks } from "@/features/tasks";
 import { useMySubmissions } from "@/features/submissions";
-import type { Submission } from "@/features/submissions";
 import { useIntern } from "@/features/interns";
+import { IssueList } from "@/features/dashboard";
 import { useTranslation } from "@/i18n";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,7 @@ export default function InternDashboardPage() {
   const { t } = useTranslation();
   const { internId } = useAuth();
   const { intern } = useIntern(internId);
-  const { tasks, loading, error, refetch } = useMyTasks(internId);
+  const { tasks, loading, error, refetch, updateTask } = useMyTasks(internId);
   const { submissions } = useMySubmissions(internId);
 
   const stats = useMemo(
@@ -24,12 +24,6 @@ export default function InternDashboardPage() {
     }),
     [tasks, submissions],
   );
-
-  const submissionByTask = useMemo(() => {
-    const map = new Map<string, Submission>();
-    for (const s of submissions) map.set(s.taskId, s);
-    return map;
-  }, [submissions]);
 
   if (loading && tasks.length === 0) {
     return <p className="text-muted-foreground">{t("common.loading")}</p>;
@@ -53,7 +47,7 @@ export default function InternDashboardPage() {
     { label: t("intern.submittedWorks"), value: stats.submitted },
   ];
 
-  const recentTasks = tasks.slice(0, 3);
+  const recentTasks = tasks.slice(0, 5);
 
   return (
     <div className="flex flex-col gap-6">
@@ -82,16 +76,13 @@ export default function InternDashboardPage() {
         {recentTasks.length === 0 ? (
           <p className="text-muted-foreground">{t("common.empty")}</p>
         ) : (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {recentTasks.map((task) => (
-              <InternTaskCard
-                key={task.id}
-                task={task}
-                internId={internId!}
-                submission={submissionByTask.get(task.id)}
-              />
-            ))}
-          </div>
+          <IssueList
+            tasks={recentTasks}
+            interns={intern ? [intern] : []}
+            selectable={false}
+            onStatusChange={(id, status) => updateTask(id, { status })}
+            onPriorityChange={(id, priority) => updateTask(id, { priority })}
+          />
         )}
       </div>
     </div>

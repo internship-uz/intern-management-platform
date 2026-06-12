@@ -1,23 +1,17 @@
-import { useMemo } from "react";
 import { useAuth } from "@/features/auth";
-import { useMyTasks, InternTaskCard } from "@/features/tasks";
-import { useMySubmissions } from "@/features/submissions";
-import type { Submission } from "@/features/submissions";
+import { useMyTasks } from "@/features/tasks";
+import { useIntern } from "@/features/interns";
+import { IssueList } from "@/features/dashboard";
+import { SubmitWorkDialog } from "@/features/submissions";
 import { useTranslation } from "@/i18n";
 import { Button } from "@/components/ui/button";
+import { SendIcon } from "lucide-react";
 
 export default function InternTasksPage() {
   const { t } = useTranslation();
   const { internId } = useAuth();
-  const { tasks, loading, error, refetch } = useMyTasks(internId);
-  const { submissions } = useMySubmissions(internId);
-
-  // Har bir task uchun eng so'nggi submission'ni topish.
-  const submissionByTask = useMemo(() => {
-    const map = new Map<string, Submission>();
-    for (const s of submissions) map.set(s.taskId, s);
-    return map;
-  }, [submissions]);
+  const { intern } = useIntern(internId);
+  const { tasks, loading, error, refetch, updateTask } = useMyTasks(internId);
 
   if (loading && tasks.length === 0) {
     return <p className="text-muted-foreground">{t("common.loading")}</p>;
@@ -36,21 +30,32 @@ export default function InternTasksPage() {
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-2xl font-bold">{t("intern.myTasks")}</h1>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h1 className="text-2xl font-bold">{t("intern.myTasks")}</h1>
+        {tasks.length > 0 && internId ? (
+          <SubmitWorkDialog
+            internId={internId}
+            tasks={tasks}
+            trigger={
+              <Button size="sm">
+                <SendIcon className="size-4" />
+                {t("submission.submit")}
+              </Button>
+            }
+          />
+        ) : null}
+      </div>
 
       {tasks.length === 0 ? (
         <p className="text-muted-foreground">{t("common.empty")}</p>
       ) : (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {tasks.map((task) => (
-            <InternTaskCard
-              key={task.id}
-              task={task}
-              internId={internId!}
-              submission={submissionByTask.get(task.id)}
-            />
-          ))}
-        </div>
+        <IssueList
+          tasks={tasks}
+          interns={intern ? [intern] : []}
+          selectable={false}
+          onStatusChange={(id, status) => updateTask(id, { status })}
+          onPriorityChange={(id, priority) => updateTask(id, { priority })}
+        />
       )}
     </div>
   );

@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
 import { tasksApi } from "../api/tasks.api";
-import type { Task } from "../types";
+import type { Task, TaskPatch } from "../types";
 
 interface UseMyTasksResult {
   tasks: Task[];
   loading: boolean;
   error: string | null;
   refetch: () => void;
+  updateTask: (id: string, patch: TaskPatch) => Promise<void>;
 }
 
 /**
@@ -32,9 +33,21 @@ export function useMyTasks(internId: string | undefined): UseMyTasksResult {
     }
   }, [internId]);
 
+  const updateTask = useCallback(async (id: string, patch: TaskPatch) => {
+    const previous = tasks;
+    setTasks((curr) =>
+      curr.map((task) => (task.id === id ? { ...task, ...patch } : task)),
+    );
+    try {
+      await tasksApi.update(id, patch);
+    } catch {
+      setTasks(previous);
+    }
+  }, [tasks]);
+
   useEffect(() => {
     fetchMyTasks();
   }, [fetchMyTasks]);
 
-  return { tasks, loading, error, refetch: fetchMyTasks };
+  return { tasks, loading, error, refetch: fetchMyTasks, updateTask };
 }
