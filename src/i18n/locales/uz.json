@@ -34,7 +34,12 @@
     "deadline": "Muddat",
     "direction": "Yo'nalish",
     "level": "Daraja",
-    "joinedAt": "Qo'shilgan sana"
+    "joinedAt": "Qo'shilgan sana",
+    "greeting": "Salom",
+    "tasksOverview": "Vazifalar holati",
+    "totalTasks": "Jami vazifalar",
+    "submittedWorks": "Yuborilgan ishlar",
+    "recentTasks": "So'nggi vazifalar"
   },
   "task": {
     "status": "Holat",
@@ -51,8 +56,13 @@
     "comment": "Izoh / Ish hisoboti",
     "submit": "Ishni yuborish",
     "feedback": "Izoh (feedback)",
+    "feedbackPlaceholder": "Internga izoh yozing...",
     "approve": "Tasdiqlash",
     "requestChanges": "O'zgartirish so'rash",
+    "intern": "Intern",
+    "task": "Vazifa",
+    "reviewTitle": "Yuborilgan ishlar",
+    "noFeedback": "Izoh yo'q",
     "status": {
       "submitted": "Yuborilgan",
       "approved": "Tasdiqlangan",

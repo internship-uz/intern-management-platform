@@ -34,7 +34,12 @@
     "deadline": "Deadline",
     "direction": "Direction",
     "level": "Level",
-    "joinedAt": "Joined at"
+    "joinedAt": "Joined at",
+    "greeting": "Hello",
+    "tasksOverview": "Tasks overview",
+    "totalTasks": "Total tasks",
+    "submittedWorks": "Submitted works",
+    "recentTasks": "Recent tasks"
   },
   "task": {
     "status": "Status",
@@ -51,8 +56,13 @@
     "comment": "Comment / Work report",
     "submit": "Submit work",
     "feedback": "Feedback",
+    "feedbackPlaceholder": "Write feedback to the intern...",
     "approve": "Approve",
     "requestChanges": "Request changes",
+    "intern": "Intern",
+    "task": "Task",
+    "reviewTitle": "Submitted works",
+    "noFeedback": "No feedback",
     "status": {
       "submitted": "Submitted",
       "approved": "Approved",

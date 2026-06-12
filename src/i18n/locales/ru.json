@@ -34,7 +34,12 @@
     "deadline": "Срок",
     "direction": "Направление",
     "level": "Уровень",
-    "joinedAt": "Дата присоединения"
+    "joinedAt": "Дата присоединения",
+    "greeting": "Привет",
+    "tasksOverview": "Обзор задач",
+    "totalTasks": "Всего задач",
+    "submittedWorks": "Отправленные работы",
+    "recentTasks": "Последние задачи"
   },
   "task": {
     "status": "Статус",
@@ -51,8 +56,13 @@
     "comment": "Комментарий / Отчёт",
     "submit": "Отправить работу",
     "feedback": "Обратная связь",
+    "feedbackPlaceholder": "Напишите комментарий стажёру...",
     "approve": "Одобрить",
     "requestChanges": "Запросить изменения",
+    "intern": "Стажёр",
+    "task": "Задача",
+    "reviewTitle": "Отправленные работы",
+    "noFeedback": "Нет комментария",
     "status": {
       "submitted": "Отправлено",
       "approved": "Одобрено",
