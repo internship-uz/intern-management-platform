@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { MainLayout } from "@/layouts/main-layout";
 import { AuthLayout } from "@/layouts/auth-layout";
+import { InternLayout } from "@/layouts/intern-layout";
 import SignInPage from "@/pages/auth/sign-in";
 import DashboardPage from "@/pages/dashboard";
 import InternsListPage from "@/pages/interns";
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       { path: "/tasks", element: <TasksListPage /> },
       { path: "/tasks/new", element: <TaskNewPage /> },
     ],
+  },
+  {
+    element: <InternLayout />,
+    children: [],
   },
   { path: "*", element: <NotFoundPage /> },
 ]);
