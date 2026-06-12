@@ -1,3 +1,4 @@
+import { NotificationsButton } from "@/components/header/notifications-button";
 import { InternSidebar } from "@/components/shared/intern-sidebar";
 import { LanguageSwitcher } from "@/components/shared/language-switcher";
 import { ModeToggle } from "@/components/shared/mode-toggle";
@@ -33,6 +34,7 @@ export function InternLayout() {
           <span className="font-semibold">{t("intern.portalTitle")}</span>
           <div className="ml-auto flex items-center gap-2">
             <LanguageSwitcher />
+            <NotificationsButton />
             <ModeToggle />
           </div>
         </header>

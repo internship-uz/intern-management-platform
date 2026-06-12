@@ -14,7 +14,6 @@ import {
 } from "@/components/ui/sidebar";
 import { useAuth } from "@/features/auth";
 import { useIntern } from "@/features/interns";
-import { useTranslation } from "@/i18n";
 import {
   LayoutDashboardIcon,
   ListChecksIcon,
@@ -24,23 +23,22 @@ import {
 export function InternSidebar({
   ...props
 }: React.ComponentProps<typeof Sidebar>) {
-  const { t } = useTranslation();
   const { internId, user } = useAuth();
   const { intern } = useIntern(internId);
 
   const navMain = [
     {
-      title: t("nav.dashboard"),
+      title: "Dashboard",
       url: "/intern",
       icon: <LayoutDashboardIcon />,
     },
     {
-      title: t("intern.myTasks"),
+      title: "My Tasks",
       url: "/intern/tasks",
       icon: <ListChecksIcon />,
     },
     {
-      title: t("intern.profile"),
+      title: "Profile",
       url: "/intern/profile",
       icon: <UserIcon />,
     },

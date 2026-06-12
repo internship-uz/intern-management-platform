@@ -19,6 +19,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useTranslation } from "@/i18n";
+import { toast } from "@/store/toast-store";
 import type { Task } from "@/features/tasks";
 import { useSubmissionsStore } from "../store/submissions.store";
 import type { Submission } from "../types";
@@ -75,6 +76,7 @@ export function SubmitWorkDialog({
       setGithubLink("");
       setDemoLink("");
       setComment("");
+      toast.success(t("submission.submitted"));
     } else {
       setError(t("common.error"));
     }
