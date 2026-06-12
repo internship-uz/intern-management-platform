@@ -1,0 +1,129 @@
+{
+  "common": {
+    "loading": "Yuklanmoqda...",
+    "error": "Xatolik yuz berdi",
+    "retry": "Qayta urinish",
+    "save": "Saqlash",
+    "cancel": "Bekor qilish",
+    "submit": "Yuborish",
+    "search": "Qidirish",
+    "logout": "Chiqish",
+    "empty": "Ma'lumot topilmadi"
+  },
+  "auth": {
+    "welcome": "Xush kelibsiz",
+    "email": "Email",
+    "password": "Parol",
+    "continue": "Davom etish",
+    "login": "Kirish",
+    "invalidCredentials": "Email yoki parol noto'g'ri"
+  },
+  "nav": {
+    "dashboard": "Boshqaruv paneli",
+    "interns": "Internlar",
+    "tasks": "Vazifalar",
+    "submissions": "Topshiriqlar",
+    "profile": "Profil",
+    "myTasks": "Mening vazifalarim",
+    "platform": "Platforma"
+  },
+  "intern": {
+    "portalTitle": "Intern Portali",
+    "profile": "Profil",
+    "myTasks": "Mening vazifalarim",
+    "taskStatus": "Vazifa holati",
+    "deadline": "Muddat",
+    "direction": "Yo'nalish",
+    "level": "Daraja",
+    "joinedAt": "Qo'shilgan sana",
+    "greeting": "Salom",
+    "tasksOverview": "Vazifalar holati",
+    "totalTasks": "Jami vazifalar",
+    "submittedWorks": "Yuborilgan ishlar",
+    "recentTasks": "So'nggi vazifalar"
+  },
+  "task": {
+    "status": "Holat",
+    "priority": "Muhimlik",
+    "dueDate": "Muddat",
+    "todo": "Bajarilmagan",
+    "in_progress": "Jarayonda",
+    "done": "Bajarilgan"
+  },
+  "submission": {
+    "title": "Ish hisoboti",
+    "githubLink": "GitHub havola",
+    "demoLink": "Demo havola",
+    "comment": "Izoh / Ish hisoboti",
+    "submit": "Ishni yuborish",
+    "submitted": "Ish muvaffaqiyatli yuborildi",
+    "feedback": "Izoh (feedback)",
+    "feedbackPlaceholder": "Internga izoh yozing...",
+    "approve": "Tasdiqlash",
+    "requestChanges": "O'zgartirish so'rash",
+    "intern": "Intern",
+    "task": "Vazifa",
+    "reviewTitle": "Yuborilgan ishlar",
+    "noFeedback": "Izoh yo'q",
+    "status": {
+      "submitted": "Yuborilgan",
+      "approved": "Tasdiqlangan",
+      "changes_requested": "O'zgartirish so'ralgan"
+    }
+  },
+  "view": {
+    "summary": "Xulosa",
+    "board": "Doska",
+    "list": "Ro'yxat"
+  },
+  "type": {
+    "story": "Story",
+    "task": "Vazifa",
+    "bug": "Xato",
+    "epic": "Epik"
+  },
+  "priority": {
+    "highest": "Eng yuqori",
+    "high": "Yuqori",
+    "medium": "O'rta",
+    "low": "Past",
+    "lowest": "Eng past"
+  },
+  "board": {
+    "groupBy": "Guruhlash",
+    "allStatuses": "Barcha holatlar",
+    "allTypes": "Barcha turlar",
+    "allPriorities": "Barcha muhimliklar",
+    "clear": "Tozalash",
+    "title": "Sarlavha",
+    "assignee": "Mas'ul",
+    "unassigned": "Tayinlanmagan",
+    "type": "Tur",
+    "empty": "Vazifalar yo'q",
+    "dropHere": "Bu yerga tashlang",
+    "noGroup": "Bu guruhda hech narsa yo'q",
+    "priorityBreakdown": "Muhimlik taqsimoti",
+    "teamWorkload": "Jamoa yuklamasi",
+    "workDistribution": "Ish taqsimoti",
+    "selectAll": "Hammasini tanlash",
+    "editFields": "Maydonlarni tahrirlash",
+    "delete": "O'chirish",
+    "selected": "{{count}} tanlandi"
+  },
+  "notifications": {
+    "title": "Bildirishnomalar",
+    "markAll": "Hammasi",
+    "clear": "Tozalash",
+    "empty": "Hozircha bildirishnoma yo'q",
+    "now": "hozir",
+    "minutesAgo": "{{count}} daq oldin",
+    "hoursAgo": "{{count}} soat oldin",
+    "daysAgo": "{{count}} kun oldin"
+  },
+  "language": {
+    "label": "Til",
+    "uz": "O'zbekcha",
+    "ru": "Русский",
+    "en": "English"
+  }
+}

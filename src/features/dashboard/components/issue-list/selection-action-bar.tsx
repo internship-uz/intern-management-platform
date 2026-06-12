@@ -1,3 +1,4 @@
+import { useTranslation } from "@/i18n";
 import { PencilIcon, Trash2Icon, XIcon } from "lucide-react";
 
 export interface SelectionActionBarProps {
@@ -15,13 +16,14 @@ export function SelectionActionBar({
   onDelete,
   onClear,
 }: SelectionActionBarProps) {
+  const { t } = useTranslation();
   if (selectedCount === 0) return null;
 
   return (
     <div className='pointer-events-none fixed inset-x-0 bottom-6 z-50 flex justify-center px-4'>
       <div className='pointer-events-auto flex items-center gap-1 rounded-md border border-border bg-popover px-2 py-1.5 text-sm shadow-lg'>
         <span className='rounded-sm bg-muted px-2 py-1 text-xs font-medium tabular-nums'>
-          {selectedCount} selected
+          {t("board.selected", { count: selectedCount })}
         </span>
 
         <button
@@ -29,7 +31,7 @@ export function SelectionActionBar({
           onClick={onSelectAll}
           className='inline-flex items-center gap-1.5 rounded-sm px-2 py-1 text-xs transition-colors hover:bg-muted'
         >
-          Select all
+          {t("board.selectAll")}
         </button>
 
         <Divider />
@@ -40,7 +42,7 @@ export function SelectionActionBar({
           className='inline-flex items-center gap-1.5 rounded-sm px-2 py-1 text-xs transition-colors hover:bg-muted'
         >
           <PencilIcon className='size-3.5' />
-          Edit fields
+          {t("board.editFields")}
         </button>
 
         <button
@@ -49,7 +51,7 @@ export function SelectionActionBar({
           className='inline-flex items-center gap-1.5 rounded-sm px-2 py-1 text-xs text-destructive transition-colors hover:bg-destructive/10'
         >
           <Trash2Icon className='size-3.5' />
-          Delete
+          {t("board.delete")}
         </button>
 
         <Divider />

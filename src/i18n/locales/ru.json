@@ -1,0 +1,129 @@
+{
+  "common": {
+    "loading": "Загрузка...",
+    "error": "Произошла ошибка",
+    "retry": "Повторить",
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "submit": "Отправить",
+    "search": "Поиск",
+    "logout": "Выйти",
+    "empty": "Данные не найдены"
+  },
+  "auth": {
+    "welcome": "Добро пожаловать",
+    "email": "Эл. почта",
+    "password": "Пароль",
+    "continue": "Продолжить",
+    "login": "Войти",
+    "invalidCredentials": "Неверная почта или пароль"
+  },
+  "nav": {
+    "dashboard": "Панель управления",
+    "interns": "Стажёры",
+    "tasks": "Задачи",
+    "submissions": "Работы",
+    "profile": "Профиль",
+    "myTasks": "Мои задачи",
+    "platform": "Платформа"
+  },
+  "intern": {
+    "portalTitle": "Портал стажёра",
+    "profile": "Профиль",
+    "myTasks": "Мои задачи",
+    "taskStatus": "Статус задачи",
+    "deadline": "Срок",
+    "direction": "Направление",
+    "level": "Уровень",
+    "joinedAt": "Дата присоединения",
+    "greeting": "Привет",
+    "tasksOverview": "Обзор задач",
+    "totalTasks": "Всего задач",
+    "submittedWorks": "Отправленные работы",
+    "recentTasks": "Последние задачи"
+  },
+  "task": {
+    "status": "Статус",
+    "priority": "Приоритет",
+    "dueDate": "Срок",
+    "todo": "К выполнению",
+    "in_progress": "В процессе",
+    "done": "Выполнено"
+  },
+  "submission": {
+    "title": "Отчёт о работе",
+    "githubLink": "Ссылка на GitHub",
+    "demoLink": "Ссылка на демо",
+    "comment": "Комментарий / Отчёт",
+    "submit": "Отправить работу",
+    "submitted": "Работа успешно отправлена",
+    "feedback": "Обратная связь",
+    "feedbackPlaceholder": "Напишите комментарий стажёру...",
+    "approve": "Одобрить",
+    "requestChanges": "Запросить изменения",
+    "intern": "Стажёр",
+    "task": "Задача",
+    "reviewTitle": "Отправленные работы",
+    "noFeedback": "Нет комментария",
+    "status": {
+      "submitted": "Отправлено",
+      "approved": "Одобрено",
+      "changes_requested": "Запрошены изменения"
+    }
+  },
+  "view": {
+    "summary": "Сводка",
+    "board": "Доска",
+    "list": "Список"
+  },
+  "type": {
+    "story": "История",
+    "task": "Задача",
+    "bug": "Баг",
+    "epic": "Эпик"
+  },
+  "priority": {
+    "highest": "Высочайший",
+    "high": "Высокий",
+    "medium": "Средний",
+    "low": "Низкий",
+    "lowest": "Низший"
+  },
+  "board": {
+    "groupBy": "Группировать",
+    "allStatuses": "Все статусы",
+    "allTypes": "Все типы",
+    "allPriorities": "Все приоритеты",
+    "clear": "Очистить",
+    "title": "Заголовок",
+    "assignee": "Исполнитель",
+    "unassigned": "Не назначен",
+    "type": "Тип",
+    "empty": "Нет задач",
+    "dropHere": "Перетащите сюда",
+    "noGroup": "В этой группе ничего нет",
+    "priorityBreakdown": "Распределение по приоритету",
+    "teamWorkload": "Загрузка команды",
+    "workDistribution": "Распределение работы",
+    "selectAll": "Выбрать все",
+    "editFields": "Изменить поля",
+    "delete": "Удалить",
+    "selected": "{{count}} выбрано"
+  },
+  "notifications": {
+    "title": "Уведомления",
+    "markAll": "Все",
+    "clear": "Очистить",
+    "empty": "Уведомлений пока нет",
+    "now": "сейчас",
+    "minutesAgo": "{{count}} мин назад",
+    "hoursAgo": "{{count}} ч назад",
+    "daysAgo": "{{count}} дн назад"
+  },
+  "language": {
+    "label": "Язык",
+    "uz": "O'zbekcha",
+    "ru": "Русский",
+    "en": "English"
+  }
+}

@@ -12,6 +12,13 @@ export const tasksApi = {
     return data;
   },
 
+  getByAssignee: async (assigneeId: string): Promise<Task[]> => {
+    const { data } = await apiClient.get<Task[]>("/tasks", {
+      params: { assigneeId },
+    });
+    return data;
+  },
+
   create: async (task: Omit<Task, "id">): Promise<Task> => {
     const { data } = await apiClient.post<Task>("/tasks", task);
     return data;

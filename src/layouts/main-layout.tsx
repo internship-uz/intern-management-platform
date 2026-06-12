@@ -1,13 +1,18 @@
 import { Header } from "@/components/header";
 import { AppSidebar } from "@/components/shared/app-sidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { getCurrentUser } from "@/features/auth";
 import { Navigate, Outlet } from "react-router-dom";
 
 export function MainLayout() {
-  const isAuth = !!localStorage.getItem("user");
+  const user = getCurrentUser();
 
-  if (!isAuth) {
+  if (!user) {
     return <Navigate to="/auth/sign-in" replace />;
+  }
+
+  if (user.role === "intern") {
+    return <Navigate to="/intern" replace />;
   }
 
   return (

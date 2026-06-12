@@ -1,9 +1,80 @@
 {
-    "users": [
+  "users": [
     {
-      "id": "u1",
+      "id": "e0d99d21-50e8-490c-8823-a1f41f2cf744",
       "email": "admin@gmail.com",
-      "password": "password"
+      "password": "password",
+      "role": "admin"
+    },
+    {
+      "id": "a3d2b9dc-b9a1-49e7-9c42-0757d5f6bbb5",
+      "email": "javohir@intern.uz",
+      "password": "intern",
+      "role": "intern",
+      "internId": "i1"
+    },
+    {
+      "id": "758e6ab3-473f-4b83-882e-f30a9e02187e",
+      "email": "diyora@intern.uz",
+      "password": "intern",
+      "role": "intern",
+      "internId": "i2"
+    },
+    {
+      "id": "be556697-2db3-40bc-8140-5ee9f6f48bd4",
+      "email": "sherzod@intern.uz",
+      "password": "intern",
+      "role": "intern",
+      "internId": "i3"
+    },
+    {
+      "id": "552a4cab-6c9b-488d-a058-97bdb08c9551",
+      "email": "madina@intern.uz",
+      "password": "intern",
+      "role": "intern",
+      "internId": "i4"
+    },
+    {
+      "id": "4afa5c7e-3cd4-4c96-bc38-fd96bc58dae6",
+      "email": "bekzod@intern.uz",
+      "password": "intern",
+      "role": "intern",
+      "internId": "i5"
+    },
+    {
+      "id": "f7738bc4-576c-4510-97e1-e07498cbdd93",
+      "email": "nilufar@intern.uz",
+      "password": "intern",
+      "role": "intern",
+      "internId": "i6"
+    },
+    {
+      "id": "a8d57205-f1be-4fb8-b455-efa5e7ae49ad",
+      "email": "aziz@intern.uz",
+      "password": "intern",
+      "role": "intern",
+      "internId": "i7"
+    },
+    {
+      "id": "bdff1f7e-56a9-47c1-ac27-3944a7761168",
+      "email": "sssss@asda.com",
+      "password": "intern",
+      "role": "intern",
+      "internId": "ILNIcaFobFg"
+    },
+    {
+      "id": "989f40f9-6761-41f3-bda0-6703bfbbe3f0",
+      "email": "jjjjjkkk@gmail.com",
+      "password": "intern",
+      "role": "intern",
+      "internId": "3Y4biSYk60Y"
+    },
+    {
+      "id": "567f6553-485a-4968-bffe-151e7ee21413",
+      "email": "ksksaoo@gmail.com",
+      "password": "intern",
+      "role": "intern",
+      "internId": "C4hUWuDQ200"
     }
   ],
   "interns": [
@@ -261,6 +332,32 @@
       "id": "sfok8NSBctU",
       "key": "IM-603",
       "createdAt": "2026-05-19T10:05:57.819Z"
+    }
+  ],
+  "submissions": [
+    {
+      "id": "f668dbe3-20de-4631-bd5a-abfd0e5799e8",
+      "taskId": "t2",
+      "internId": "i1",
+      "githubLink": "https://github.com/javohir/auth-flow",
+      "demoLink": "https://auth-flow-demo.vercel.app",
+      "comment": "Sign-in formaga validatsiya qo'shildi, email va parol tekshiriladi.",
+      "status": "submitted",
+      "feedback": "",
+      "createdAt": "2026-05-18T09:00:00.000Z",
+      "updatedAt": "2026-05-18T09:00:00.000Z"
+    },
+    {
+      "taskId": "t8",
+      "internId": "i1",
+      "githubLink": "sdfsdfsd",
+      "demoLink": "fsdfsdf",
+      "comment": "sdfsdf",
+      "status": "submitted",
+      "feedback": "",
+      "createdAt": "2026-06-12T12:24:02.431Z",
+      "updatedAt": "2026-06-12T12:24:02.431Z",
+      "id": "K3qD7vkw70k"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

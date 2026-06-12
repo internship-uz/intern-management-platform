@@ -12,7 +12,13 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { LayoutDashboardIcon, ListChecksIcon, UsersIcon } from "lucide-react";
+import { useTranslation } from "@/i18n";
+import {
+  ClipboardCheckIcon,
+  LayoutDashboardIcon,
+  ListChecksIcon,
+  UsersIcon,
+} from "lucide-react";
 
 const data = {
   user: {
@@ -20,27 +26,34 @@ const data = {
     email: "admin@example.com",
     avatar: "https://i.pravatar.cc/150?u=admin",
   },
-  navMain: [
+};
+
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { t } = useTranslation();
+  const loggedUser = JSON.parse(localStorage.getItem("user") || "{}");
+
+  const navMain = [
     {
-      title: "Dashboard",
+      title: t("nav.dashboard"),
       url: "/",
       icon: <LayoutDashboardIcon />,
     },
     {
-      title: "Interns",
+      title: t("nav.interns"),
       url: "/interns",
       icon: <UsersIcon />,
     },
     {
-      title: "Tasks",
+      title: t("nav.tasks"),
       url: "/tasks",
       icon: <ListChecksIcon />,
     },
-  ],
-};
-
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const loggedUser = JSON.parse(localStorage.getItem("user") || "{}");
+    {
+      title: t("nav.submissions"),
+      url: "/submissions",
+      icon: <ClipboardCheckIcon />,
+    },
+  ];
   
   const currentUser = {
     name: loggedUser.id ? "Admin" : data.user.name,
@@ -64,7 +77,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
+        <NavMain items={navMain} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={currentUser} />
